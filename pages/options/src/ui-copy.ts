@@ -65,6 +65,8 @@ type Copy = {
   navAbout: string;
   aboutTitle: string;
   aboutBody: string;
+  aboutGithub: string;
+  aboutFeedback: string;
   changelogTitle: string;
   changelogHint: string;
   builtinSitesTitle: string;
@@ -158,6 +160,8 @@ const en: Copy = {
   aboutTitle: 'About MultCat',
   aboutBody:
     'Free bilingual translator for Chrome for non-commercial use (PolyForm Noncommercial). Settings stay local. Contribute skip rules via builtin-site-rules.json.',
+  aboutGithub: 'GitHub repository',
+  aboutFeedback: 'Report an issue',
   changelogTitle: 'Changelog',
   changelogHint: 'Recent MultCat releases. Full notes also live in the repo CHANGELOG.md.',
   builtinSitesTitle: 'Builtin skip rules',
@@ -252,6 +256,8 @@ const zh_CN: Copy = {
   aboutTitle: '关于 MultCat',
   aboutBody:
     '免费双语翻译扩展，仅限非商业用途（PolyForm Noncommercial）。设置仅保存在本地。欢迎通过 builtin-site-rules.json 贡献免翻规则。',
+  aboutGithub: 'GitHub 仓库',
+  aboutFeedback: '问题反馈',
   changelogTitle: '更新日志',
   changelogHint: '近期版本变更。完整记录见仓库 CHANGELOG.md。',
   builtinSitesTitle: '内置免翻规则',
@@ -287,6 +293,8 @@ const zh_TW: Copy = {
   aboutTitle: '關於 MultCat',
   aboutBody:
     '免費雙語翻譯擴充，僅限非商業用途（PolyForm Noncommercial）。設定僅保存在本機。歡迎透過 builtin-site-rules.json 貢獻略過規則。',
+  aboutGithub: 'GitHub 倉庫',
+  aboutFeedback: '問題回饋',
   changelogTitle: '更新日誌',
   changelogHint: '近期版本變更。完整記錄見倉庫 CHANGELOG.md。',
   builtinSitesTitle: '內建略過規則',

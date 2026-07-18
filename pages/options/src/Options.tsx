@@ -4,13 +4,15 @@ import {
   ApiOutlined,
   BgColorsOutlined,
   BookOutlined,
+  BugOutlined,
   BulbOutlined,
+  GithubOutlined,
   GlobalOutlined,
   HistoryOutlined,
   InfoCircleOutlined,
   StopOutlined,
 } from '@ant-design/icons';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import {
   BUILTIN_SKIP_SELECTORS,
   CUSTOM_LLM_MODEL_VALUE,
@@ -71,6 +73,9 @@ import type {
 import type { ChangeEvent } from 'react';
 
 const { Sider, Content } = Layout;
+
+const PROJECT_REPO_URL = PROJECT_URL_OBJECT.url;
+const PROJECT_ISSUES_URL = `${PROJECT_REPO_URL}/issues`;
 
 type SectionId = 'guide' | 'language' | 'engine' | 'appearance' | 'skip' | 'changelog' | 'about';
 const SECTIONS: SectionId[] = ['guide', 'language', 'engine', 'appearance', 'skip', 'changelog', 'about'];
@@ -855,6 +860,24 @@ const SettingsPage = () => {
                         <p className="settings-card-hint" style={{ margin: '6px 0 0' }}>
                           {copy.aboutBody}
                         </p>
+                        <div className="settings-about-links">
+                          <a
+                            className="settings-about-link"
+                            href={PROJECT_REPO_URL}
+                            target="_blank"
+                            rel="noreferrer noopener">
+                            <GithubOutlined />
+                            {copy.aboutGithub}
+                          </a>
+                          <a
+                            className="settings-about-link"
+                            href={PROJECT_ISSUES_URL}
+                            target="_blank"
+                            rel="noreferrer noopener">
+                            <BugOutlined />
+                            {copy.aboutFeedback}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </section>

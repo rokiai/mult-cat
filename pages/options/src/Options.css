@@ -565,6 +565,40 @@ body,
   gap: 8px;
 }
 
+.settings-about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.settings-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--opt-border);
+  background: var(--opt-surface);
+  color: var(--opt-text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.settings-about-link:hover {
+  border-color: var(--opt-primary);
+  color: var(--opt-primary);
+}
+
+.settings-about-link .anticon {
+  font-size: 14px;
+}
+
 .settings-changelog {
   display: flex;
   flex-direction: column;

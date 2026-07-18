@@ -6,6 +6,11 @@ type ChangelogItem = {
 
 const zh: ChangelogItem[] = [
   {
+    version: '0.5.1',
+    date: '2026-07-18',
+    highlights: ['修复：双语模式下划词弹层不再被二次对照'],
+  },
+  {
     version: '0.5.0',
     date: '2026-07-18',
     highlights: [
@@ -20,6 +25,11 @@ const zh: ChangelogItem[] = [
 ];
 
 const en: ChangelogItem[] = [
+  {
+    version: '0.5.1',
+    date: '2026-07-18',
+    highlights: ['Fix: selection popup is no longer bilingual-translated during page bilingual mode'],
+  },
   {
     version: '0.5.0',
     date: '2026-07-18',

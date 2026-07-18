@@ -12,16 +12,17 @@ import {
 } from '@ant-design/icons';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import {
-  BUILTIN_SITE_RULES,
   BUILTIN_SKIP_SELECTORS,
   CUSTOM_LLM_MODEL_VALUE,
   LLM_VENDORS,
+  LOCAL_BUILTIN_SITE_RULES,
   TRANSLATION_FROM_LANG_OPTIONS,
   TRANSLATION_PROVIDER_OPTIONS,
   TRANSLATION_TO_LANG_OPTIONS,
   UI_LOCALE_OPTIONS,
   exampleThemeStorage,
   getLlmVendor,
+  loadBuiltinSiteRules,
   resolveUiLocale,
   siteRuleLabel,
   translationSettingsStorage,
@@ -45,6 +46,7 @@ import {
   Tag,
   theme as antdTheme,
   App as AntApp,
+  message,
 } from 'antd';
 import deDE from 'antd/locale/de_DE';
 import enUS from 'antd/locale/en_US';
@@ -57,14 +59,16 @@ import ruRU from 'antd/locale/ru_RU';
 import viVN from 'antd/locale/vi_VN';
 import zhCN from 'antd/locale/zh_CN';
 import zhTW from 'antd/locale/zh_TW';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type {
   LlmVendorId,
+  SiteRule,
   TranslationFromLang,
   TranslationProviderId,
   TranslationToLang,
   UiLocaleId,
 } from '@extension/storage';
+import type { ChangeEvent } from 'react';
 
 const { Sider, Content } = Layout;
 
@@ -217,6 +221,8 @@ const SettingsPage = () => {
   const [siteHostInput, setSiteHostInput] = useState('');
   const [siteSelectorInput, setSiteSelectorInput] = useState('');
   const [section, setSection] = useState<SectionId>(() => (typeof window === 'undefined' ? 'guide' : parseHash()));
+  const [builtinSiteRules, setBuiltinSiteRules] = useState<SiteRule[]>(LOCAL_BUILTIN_SITE_RULES);
+  const skipImportInputRef = useRef<HTMLInputElement>(null);
 
   const algorithm = themeState.isLight ? antdTheme.defaultAlgorithm : antdTheme.darkAlgorithm;
   const effectiveLocale = resolveUiLocale(settings.uiLocale ?? 'auto');
@@ -300,6 +306,32 @@ const SettingsPage = () => {
     setSiteSelectorInput('');
   };
 
+  const exportSkipRules = async () => {
+    const snapshot = await translationSkipStorage.exportUserRules();
+    const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'multcat-skip-rules.json';
+    anchor.click();
+    URL.revokeObjectURL(url);
+    void message.success(copy.skipExportOk);
+  };
+
+  const onSkipImportFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const payload = JSON.parse(text) as unknown;
+      await translationSkipStorage.importUserRules(payload, { mode: 'merge' });
+      void message.success(copy.skipImportOk);
+    } catch {
+      void message.error(copy.skipImportFail);
+    }
+  };
+
   const onVendorChange = (vendorId: LlmVendorId) => {
     void translationSettingsStorage.setLlmVendor(vendorId);
   };
@@ -317,6 +349,27 @@ const SettingsPage = () => {
     sync();
     window.addEventListener('hashchange', sync);
     return () => window.removeEventListener('hashchange', sync);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    void loadBuiltinSiteRules().then(rules => {
+      if (!cancelled) setBuiltinSiteRules(rules);
+    });
+    try {
+      chrome.runtime.sendMessage({ type: 'REFRESH_BUILTIN_SITE_RULES' }, () => {
+        void chrome.runtime.lastError;
+        if (cancelled) return;
+        void loadBuiltinSiteRules().then(rules => {
+          if (!cancelled) setBuiltinSiteRules(rules);
+        });
+      });
+    } catch {
+      // ignore
+    }
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const goSection = (key: SectionId) => {
@@ -598,6 +651,21 @@ const SettingsPage = () => {
                       <div className="settings-card-title">
                         <StopOutlined />
                         {copy.skipTitle}
+                        <span className="settings-card-actions">
+                          <Button size="small" onClick={() => void exportSkipRules()}>
+                            {copy.skipExport}
+                          </Button>
+                          <Button size="small" onClick={() => skipImportInputRef.current?.click()}>
+                            {copy.skipImport}
+                          </Button>
+                          <input
+                            ref={skipImportInputRef}
+                            type="file"
+                            accept="application/json,.json"
+                            hidden
+                            onChange={event => void onSkipImportFile(event)}
+                          />
+                        </span>
                       </div>
                       <p className="settings-card-hint">{copy.skipDesc}</p>
 
@@ -717,7 +785,7 @@ const SettingsPage = () => {
                         {copy.builtinSitesTitle}
                       </div>
                       <p className="settings-card-hint">{copy.builtinSitesDesc}</p>
-                      {BUILTIN_SITE_RULES.length === 0 ? (
+                      {builtinSiteRules.length === 0 ? (
                         <div className="settings-empty">
                           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={copy.builtinSitesEmpty} />
                         </div>
@@ -725,7 +793,7 @@ const SettingsPage = () => {
                         <Collapse
                           className="settings-collapse"
                           size="small"
-                          items={BUILTIN_SITE_RULES.map((rule, index) => ({
+                          items={builtinSiteRules.map((rule, index) => ({
                             key: `${siteRuleLabel(rule)}-${index}`,
                             label: (
                               <span className="settings-site-label">

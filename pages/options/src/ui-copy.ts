@@ -42,6 +42,11 @@ type Copy = {
   skipAdd: string;
   skipEmpty: string;
   skipNoSite: string;
+  skipExport: string;
+  skipImport: string;
+  skipExportOk: string;
+  skipImportOk: string;
+  skipImportFail: string;
   guideTitle: string;
   guideDesc: string;
   guideSteps: GuideStep[];
@@ -104,6 +109,11 @@ const en: Copy = {
   skipAdd: 'Add',
   skipEmpty: 'None yet',
   skipNoSite: 'No site rules',
+  skipExport: 'Export',
+  skipImport: 'Import',
+  skipExportOk: 'Skip rules exported',
+  skipImportOk: 'Skip rules merged',
+  skipImportFail: 'Could not import skip rules. Check the JSON file.',
   guideTitle: 'Usage guide',
   guideDesc: 'Quick start for MultCat.',
   guideSteps: [
@@ -152,7 +162,7 @@ const en: Copy = {
   changelogHint: 'Recent MultCat releases. Full notes also live in the repo CHANGELOG.md.',
   builtinSitesTitle: 'Builtin skip rules',
   builtinSitesDesc:
-    'Shipped with the extension (read-only). Only exclude selectors — edit packages/storage/lib/impl/builtin-site-rules.json and open a PR.',
+    'Prefer remote rules from the MultCat GitHub repo (cached 24h). Falls back to the bundled JSON if offline. Contribute via PR to builtin-site-rules.json.',
   builtinSitesEmpty: 'No builtin rules',
 };
 
@@ -193,6 +203,11 @@ const zh_CN: Copy = {
   skipAdd: '添加',
   skipEmpty: '暂无',
   skipNoSite: '暂无站点规则',
+  skipExport: '导出',
+  skipImport: '导入',
+  skipExportOk: '已导出免翻规则',
+  skipImportOk: '已合并导入免翻规则',
+  skipImportFail: '导入失败，请检查 JSON 文件格式',
   guideTitle: '使用教程',
   guideDesc: 'MultCat 快速上手。',
   guideSteps: [
@@ -241,7 +256,7 @@ const zh_CN: Copy = {
   changelogHint: '近期版本变更。完整记录见仓库 CHANGELOG.md。',
   builtinSitesTitle: '内置免翻规则',
   builtinSitesDesc:
-    '随扩展打包（只读）。仅 exclude 选择器 — 修改 packages/storage/lib/impl/builtin-site-rules.json 并提交 PR。',
+    '优先从 GitHub 仓库拉取（缓存 24 小时）；离线时回退到扩展内打包的 JSON。欢迎 PR 贡献 builtin-site-rules.json。',
   builtinSitesEmpty: '暂无内置规则',
 };
 
@@ -253,6 +268,11 @@ const zh_TW: Copy = {
   languageTitle: '語言設定',
   appearanceTitle: '外觀設定',
   skipTitle: '略過區域',
+  skipExport: '匯出',
+  skipImport: '匯入',
+  skipExportOk: '已匯出略過規則',
+  skipImportOk: '已合併匯入略過規則',
+  skipImportFail: '匯入失敗，請檢查 JSON 檔案格式',
   guideTitle: '使用教學',
   welcomeTitle: '歡迎使用 MultCat！',
   welcomeDesc: '讓世界語言觸手可及 — 網頁雙語、劃詞查詞、多引擎切換。',
@@ -271,7 +291,7 @@ const zh_TW: Copy = {
   changelogHint: '近期版本變更。完整記錄見倉庫 CHANGELOG.md。',
   builtinSitesTitle: '內建略過規則',
   builtinSitesDesc:
-    '隨擴充打包（唯讀）。僅 exclude 選擇器 — 修改 packages/storage/lib/impl/builtin-site-rules.json 並提交 PR。',
+    '優先從 GitHub 倉庫拉取（快取 24 小時）；離線時回退到擴充內打包的 JSON。歡迎 PR 貢獻 builtin-site-rules.json。',
 };
 
 const ja: Copy = {

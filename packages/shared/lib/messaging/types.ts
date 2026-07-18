@@ -18,6 +18,10 @@ export type StartSkipPickMessage = {
   type: 'START_SKIP_PICK';
 };
 
+export type RefreshBuiltinSiteRulesMessage = {
+  type: 'REFRESH_BUILTIN_SITE_RULES';
+};
+
 export type TranslateTextSuccess = {
   type: 'TRANSLATE_TEXT_RESULT';
   ok: true;
@@ -41,7 +45,8 @@ export type ExtensionMessage =
   | TranslatePageMessage
   | GetPageTranslateStateMessage
   | TranslateTextMessage
-  | StartSkipPickMessage;
+  | StartSkipPickMessage
+  | RefreshBuiltinSiteRulesMessage;
 
 export type ExtensionResponse =
   | TranslateTextResultMessage

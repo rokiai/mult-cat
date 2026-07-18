@@ -1,6 +1,8 @@
 import { translateTextViaBackground } from '@extension/shared';
 import {
   BUILTIN_SKIP_SELECTORS,
+  isBuiltinSiteRulesCacheStale,
+  loadBuiltinSiteRules,
   resolveBuiltinSiteRules,
   translationSettingsStorage,
   translationSkipStorage,
@@ -320,8 +322,22 @@ const matchesAnySelector = (el: Element, selectors: readonly string[]): boolean 
 
 const loadSkipSelectors = async (): Promise<string[]> => {
   const host = location.hostname;
-  const site = resolveBuiltinSiteRules(host);
+  const rules = await loadBuiltinSiteRules();
+  const site = resolveBuiltinSiteRules(host, rules);
   const custom = await translationSkipStorage.listForHost(host);
+
+  // Stale-while-revalidate: kick background refresh without blocking translation.
+  void isBuiltinSiteRulesCacheStale().then(stale => {
+    if (!stale) return;
+    try {
+      chrome.runtime.sendMessage({ type: 'REFRESH_BUILTIN_SITE_RULES' }, () => {
+        void chrome.runtime.lastError;
+      });
+    } catch {
+      // Extension context may be unavailable on some pages.
+    }
+  });
+
   return [...BUILTIN_SKIP_SELECTORS, ...site.excludeSelectors, ...custom];
 };
 

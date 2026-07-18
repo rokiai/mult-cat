@@ -13,7 +13,6 @@ if (!window.__CEB_TRANSLATE_READY__) {
   window.__CEB_TRANSLATE_READY__ = true;
 
   console.log('[CEB] All content script loaded');
-  document.documentElement.setAttribute('data-ceb-ready', '1');
   initSelectionTranslate();
 
   chrome.runtime.onMessage.addListener((message: ExtensionMessage, _sender, sendResponse) => {

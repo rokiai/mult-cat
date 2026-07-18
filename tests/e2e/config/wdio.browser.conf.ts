@@ -2,28 +2,34 @@ import { config as baseConfig } from './wdio.conf.js';
 import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path.js';
 import { IS_CI, IS_FIREFOX } from '@extension/env';
 import { readdir, readFile } from 'node:fs/promises';
-import { extname, join } from 'node:path';
+import { extname, join, resolve } from 'node:path';
 
 const extName = IS_FIREFOX ? '.xpi' : '.zip';
 const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));
 const latestExtension = extensions.filter(file => extname(file) === extName).at(-1);
 const extPath = join(import.meta.dirname, `../../../dist-zip/${latestExtension}`);
 const bundledExtension = (await readFile(extPath)).toString('base64');
+/** Unpacked build — Chrome `extensions: [base64]` only accepts .crx, not .zip. */
+const unpackedExtPath = resolve(import.meta.dirname, '../../../dist');
 
 const chromeCapabilities = {
   browserName: 'chrome',
+  // Force Chrome for Testing (branded Chrome 137+ may ignore --load-extension).
+  browserVersion: 'stable',
   acceptInsecureCerts: true,
   'goog:chromeOptions': {
+    // Prefer Chrome for Testing (still allows --load-extension).
     args: [
+      `--disable-extensions-except=${unpackedExtPath}`,
+      `--load-extension=${unpackedExtPath}`,
       '--disable-web-security',
       '--disable-gpu',
       '--no-sandbox',
       '--disable-dev-shm-usage',
-      // Old `--headless` does not load extensions; new mode is required in CI.
+      // Old `--headless` does not load extensions.
       ...(IS_CI ? ['--headless=new'] : []),
     ],
     prefs: { 'extensions.ui.developer_mode': true },
-    extensions: [bundledExtension],
   },
 };
 
@@ -39,7 +45,6 @@ export const config: WebdriverIO.Config = {
   ...baseConfig,
   capabilities: IS_FIREFOX ? [firefoxCapabilities] : [chromeCapabilities],
 
-  // Keep sequential in CI to avoid flaky extension discovery across workers.
   maxInstances: 1,
   logLevel: 'error',
   execArgv: IS_CI ? [] : ['--inspect'],

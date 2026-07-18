@@ -1,21 +1,18 @@
 describe('Webextension Content Script', () => {
-  it('should log MultCat content script loaded on any page', async () => {
-    await browser.sessionSubscribe({ events: ['log.entryAdded'] });
-    const logs: (string | null)[] = [];
-
-    browser.on('log.entryAdded', logEntry => {
-      logs.push(logEntry.text);
-    });
-
+  it('should inject MultCat content script on any page', async () => {
     await browser.url('https://www.example.com');
 
-    const EXPECTED_LOG_MESSAGE = '[CEB] All content script loaded';
-    await browser.waitUntil(() => logs.includes(EXPECTED_LOG_MESSAGE), {
-      timeout: 20000,
-      interval: 250,
-      timeoutMsg: `Content script log not seen. Captured: ${JSON.stringify(logs.slice(-20))}`,
-    });
+    // Content scripts run in an isolated world, so console BiDi logs are unreliable in CI.
+    // The script marks <html data-ceb-ready="1"> which is visible to the page.
+    await browser.waitUntil(
+      async () => (await browser.execute(() => document.documentElement.getAttribute('data-ceb-ready'))) === '1',
+      {
+        timeout: 20000,
+        interval: 250,
+        timeoutMsg: 'Content script did not set data-ceb-ready on documentElement',
+      },
+    );
 
-    expect(logs).toContain(EXPECTED_LOG_MESSAGE);
+    await expect(await browser.execute(() => document.documentElement.getAttribute('data-ceb-ready'))).toBe('1');
   });
 });

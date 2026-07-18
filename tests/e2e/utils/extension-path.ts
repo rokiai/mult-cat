@@ -7,9 +7,7 @@ export const getChromeExtensionPath = async (browser: WebdriverIO.Browser) => {
   await browser.url('chrome://extensions/');
 
   /**
-   * https://webdriver.io/docs/extension-testing/web-extensions/#test-popup-modal-in-chrome
-   *
-   * Shadow DOM on chrome://extensions must be walked manually.
+   * Walk shadow DOM on chrome://extensions (WebdriverIO deep selectors are flaky here).
    * @url https://github.com/webdriverio/webdriverio/issues/13521
    */
   const extensionId = await browser.waitUntil(
@@ -24,17 +22,30 @@ export const getChromeExtensionPath = async (browser: WebdriverIO.Browser) => {
         return false;
       }
 
-      const extensionItem = await itemList.shadow$('extensions-item');
-      if (!(await extensionItem.isExisting())) {
+      // Prefer MultCat if multiple items exist.
+      const items = await itemList.shadow$$('extensions-item');
+      if (!items.length) {
         return false;
       }
 
-      return extensionItem.getAttribute('id');
+      for (const item of items) {
+        try {
+          const name = await (await item.shadow$('#name')).getText();
+          if (name.includes('MultCat')) {
+            return item.getAttribute('id');
+          }
+        } catch {
+          // ignore and try next / fall through
+        }
+      }
+
+      return items[0].getAttribute('id');
     },
     {
-      timeout: 20000,
+      timeout: 30000,
       interval: 500,
-      timeoutMsg: 'Chrome extension did not appear on chrome://extensions (need --headless=new in CI)',
+      timeoutMsg:
+        'Chrome extension did not appear on chrome://extensions. Ensure dist/ exists and --load-extension is set (zip base64 is not a valid .crx).',
     },
   );
 

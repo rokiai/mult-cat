@@ -90,6 +90,9 @@ const BUILTIN_SKIP_SELECTORS = [
   '[translate="no"]',
   '[data-ceb-skip]',
   '[contenteditable="true"]',
+  // Extension UI — must not be swept into page bilingual mode.
+  '#ceb-selection-root',
+  '#ceb-skip-pick-toast',
 ] as const;
 
 export { translationSkipStorage, BUILTIN_SKIP_SELECTORS };

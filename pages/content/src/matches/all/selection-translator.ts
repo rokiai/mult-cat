@@ -180,6 +180,10 @@ const getRoot = (): HTMLDivElement => {
   if (root && document.documentElement.contains(root)) return root;
   root = document.createElement('div');
   root.id = ROOT_ID;
+  // Prevent page bilingual DomTranslator from re-translating this popup.
+  root.setAttribute('data-ceb-skip', 'true');
+  root.classList.add('notranslate');
+  root.setAttribute('translate', 'no');
   document.documentElement.appendChild(root);
   return root;
 };

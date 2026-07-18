@@ -1,0 +1,28 @@
+ceb-bilingual[data-ceb-bilingual] {
+  font-weight: normal;
+  opacity: 0.85;
+}
+
+ceb-bilingual[data-ceb-display='block'],
+ceb-bilingual[data-ceb-display='flex-row'],
+ceb-bilingual[data-ceb-display='grid-row'] {
+  display: block;
+  margin-top: 0.35em;
+  line-height: 1.5;
+}
+
+ceb-bilingual[data-ceb-display='flex-row'] {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+ceb-bilingual[data-ceb-display='grid-row'] {
+  grid-column: 1 / -1;
+}
+
+ceb-bilingual[data-ceb-display='inline'] {
+  display: inline;
+  margin-left: 0.35em;
+  line-height: inherit;
+}

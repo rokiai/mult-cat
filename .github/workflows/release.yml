@@ -1,0 +1,102 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build & publish release
+    runs-on: ubuntu-latest
+    env:
+      CEB_CI: true
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Resolve version
+        id: ver
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Build Chrome zip
+        run: pnpm zip
+
+      - name: Build Firefox xpi
+        run: pnpm zip:firefox
+
+      - name: Prepare release assets
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.ver.outputs.version }}"
+          mkdir -p release-assets
+          CHROME_ZIP="$(ls -1t dist-zip/*.zip | head -1)"
+          FIREFOX_XPI="$(ls -1t dist-zip/*.xpi | head -1)"
+          cp "${CHROME_ZIP}" "release-assets/MultCat-chrome.zip"
+          cp "${CHROME_ZIP}" "release-assets/MultCat-${VERSION}-chrome.zip"
+          cp "${FIREFOX_XPI}" "release-assets/MultCat-firefox.xpi"
+          cp "${FIREFOX_XPI}" "release-assets/MultCat-${VERSION}-firefox.xpi"
+          ls -lah release-assets
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: MultCat ${{ steps.ver.outputs.tag }}
+          generate_release_notes: true
+          files: release-assets/*
+          fail_on_unmatched_files: true
+
+      - name: Update README download section
+        env:
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.ver.outputs.tag }}
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: python3 .github/scripts/update-readme-download.py
+
+      - name: Commit README on default branch
+        env:
+          TAG: ${{ steps.ver.outputs.tag }}
+        run: |
+          set -euo pipefail
+          DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Preserve updated README, then switch to default branch tip
+          cp README.md /tmp/README.release.md
+          git fetch origin "${DEFAULT_BRANCH}"
+          git checkout -B "${DEFAULT_BRANCH}" "origin/${DEFAULT_BRANCH}"
+          cp /tmp/README.release.md README.md
+
+          if git diff --quiet README.md; then
+            echo "README unchanged"
+            exit 0
+          fi
+
+          git add README.md
+          git commit -m "docs: update download links for ${TAG}"
+          git push origin "HEAD:${DEFAULT_BRANCH}"

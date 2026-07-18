@@ -1,0 +1,64 @@
+[
+  {
+    "matches": ["*"],
+    "excludeSelectors": ["nav", "aside", "footer", "code", "pre", "kbd", "samp", "script", "style", "svg", "canvas"]
+  },
+  {
+    "matches": ["github.com", "*.github.com"],
+    "excludeSelectors": [
+      "code",
+      "pre",
+      "kbd",
+      "samp",
+      ".blob-code",
+      ".react-code-text",
+      "[data-testid='codemirror-editor']",
+      "nav",
+      "[role='navigation']"
+    ]
+  },
+  {
+    "matches": ["twitter.com", "x.com", "*.twitter.com", "*.x.com"],
+    "excludeSelectors": ["nav", "[data-testid='sidebarColumn']", "[role='navigation']"]
+  },
+  {
+    "matches": ["www.youtube.com", "youtube.com", "m.youtube.com", "*.youtube.com"],
+    "excludeSelectors": ["nav", "#guide", "ytd-mini-guide-renderer"]
+  },
+  {
+    "matches": ["www.reddit.com", "new.reddit.com", "sh.reddit.com", "*.reddit.com"],
+    "excludeSelectors": ["code", "pre", "nav", "aside", "[slot='left-sidebar']"]
+  },
+  {
+    "matches": ["medium.com", "*.medium.com"],
+    "excludeSelectors": ["code", "pre", "nav", "footer"]
+  },
+  {
+    "matches": ["stackoverflow.com", "*.stackoverflow.com", "serverfault.com", "superuser.com", "askubuntu.com"],
+    "excludeSelectors": ["code", "pre", ".math-container", "nav"]
+  },
+  {
+    "matches": ["en.wikipedia.org", "*.wikipedia.org"],
+    "excludeSelectors": [".mwe-math-element", "code", "pre", "nav", ".navbox", ".mw-editsection"]
+  },
+  {
+    "matches": ["news.ycombinator.com"],
+    "excludeSelectors": ["code", "pre"]
+  },
+  {
+    "matches": ["www.npmjs.com", "npmjs.com"],
+    "excludeSelectors": ["code", "pre", "nav"]
+  },
+  {
+    "matches": ["developer.chrome.com", "*.developer.chrome.com", "react.dev", "*.react.dev", "docs.github.com"],
+    "excludeSelectors": ["code", "pre", "nav", "aside"]
+  },
+  {
+    "matches": ["discord.com", "*.discord.com"],
+    "excludeSelectors": ["code", "pre", "nav", "aside"]
+  },
+  {
+    "matches": ["chat.openai.com", "chatgpt.com", "*.chatgpt.com"],
+    "excludeSelectors": ["code", "pre", "nav"]
+  }
+]

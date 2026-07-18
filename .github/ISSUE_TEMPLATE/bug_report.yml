@@ -1,0 +1,87 @@
+name: Bug 反馈
+description: 报告 MultCat 使用或开发中的问题
+title: '[Bug]: '
+labels: ['bug']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请尽量提供可复现步骤，便于排查。
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题模块
+      options:
+        - Popup 弹窗
+        - 网页双语翻译
+        - 划词翻译
+        - 设置页
+        - 翻译引擎 / 大模型
+        - 免 / 安装
+        - 其它
+    validations:
+      required: true
+
+  - type: textarea
+    id: to-reproduce
+    attributes:
+      label: 复现步骤
+      description: 一步步说明如何复现。
+      placeholder: |
+        1. 打开 …
+        2. 点击 …
+        3. 出现 …
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 期望行为
+      placeholder: 期望发生什么。
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: 实际行为
+      placeholder: 实际发生了什么（可贴报错或截图说明）。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: 浏览器
+      multiple: true
+      options:
+        - Chrome
+        - Edge
+        - Chromium
+        - Firefox
+        - Brave
+        - 其它
+    validations:
+      required: true
+
+  - type: input
+    id: extension-version
+    attributes:
+      label: MultCat 版本
+      description: 扩展版本号（如 v0.5.0）或 commit。
+      placeholder: v0.5.0
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图 / 录屏
+      description: 如有界面问题，请附截图。
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 其它信息
+      description: 引擎类型、目标语言、站点 URL 等。

@@ -1,0 +1,96 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "MultCat bilingual translation extension"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "MultCat"
+  },
+  "toggleTheme": {
+    "message": "Design wechseln"
+  },
+  "injectButton": {
+    "message": "Content-Skripte einfügen"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "Hallo, mein Name ist $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Max"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "Hallo $1"
+  },
+  "displayErrorInfo": {
+    "message": "Fehler aufgetreten"
+  },
+  "displayErrorDescription": {
+    "message": "Beim Laden der Seite ist ein Problem aufgetreten."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Fehlerdetails:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Unbekannter Fehler"
+  },
+  "displayErrorReset": {
+    "message": "Erneut versuchen"
+  },
+  "translateTitle": {
+    "message": "Zweisprachige Übersetzung"
+  },
+  "translateButton": {
+    "message": "Seite übersetzen"
+  },
+  "translateClose": {
+    "message": "Original wiederherstellen"
+  },
+  "translateProvider": {
+    "message": "Übersetzungsdienst"
+  },
+  "translateLoading": {
+    "message": "Übersetze…"
+  },
+  "translateUnsupportedPage": {
+    "message": "Diese Seite kann nicht übersetzt werden"
+  },
+  "translateInjectFailed": {
+    "message": "Seite nicht erreichbar. Neu laden und erneut versuchen."
+  },
+  "skipTitle": {
+    "message": "Ausschlussregeln"
+  },
+  "skipHint": {
+    "message": "CSS-Selektoren ohne Übersetzung. Eingebaut: .notranslate, [translate=no], [data-ceb-skip]."
+  },
+  "skipSelectorPlaceholder": {
+    "message": ".sidebar, #logo, nav a…"
+  },
+  "skipAddSite": {
+    "message": "Für Seite hinzufügen"
+  },
+  "skipAddGlobal": {
+    "message": "Global hinzufügen"
+  },
+  "skipPick": {
+    "message": "Auf Seite wählen"
+  },
+  "skipSiteLabel": {
+    "message": "Diese Seite"
+  },
+  "skipGlobalLabel": {
+    "message": "Global"
+  },
+  "skipEmpty": {
+    "message": "Keine"
+  },
+  "openSettings": {
+    "message": "Einstellungen öffnen"
+  }
+}

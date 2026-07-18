@@ -1,0 +1,14 @@
+# Number of days of inactivity before an Issue becomes stale
+daysUntilStale: 90
+# Number of days of inactivity before a stale Issue is closed
+daysUntilClose: 30
+exemptLabels:
+  - pinned
+  - security
+staleLabel: stale
+markComment: >
+  此 Issue 因长时间无活动被标记为 stale，若仍需跟进请回复；
+  否则将在一段时间后自动关闭。
+unmarkComment: false
+closeComment: true
+only: issues

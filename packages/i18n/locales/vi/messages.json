@@ -1,0 +1,96 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "MultCat bilingual translation extension"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "MultCat"
+  },
+  "toggleTheme": {
+    "message": "Đổi giao diện"
+  },
+  "injectButton": {
+    "message": "Chèn content scripts"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "Xin chào, tôi tên là $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "An"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "Xin chào $1"
+  },
+  "displayErrorInfo": {
+    "message": "Đã xảy ra lỗi"
+  },
+  "displayErrorDescription": {
+    "message": "Xin lỗi, có vấn đề khi tải trang."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Chi tiết lỗi:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Lỗi không xác định"
+  },
+  "displayErrorReset": {
+    "message": "Thử lại"
+  },
+  "translateTitle": {
+    "message": "Dịch song ngữ"
+  },
+  "translateButton": {
+    "message": "Dịch trang"
+  },
+  "translateClose": {
+    "message": "Khôi phục gốc"
+  },
+  "translateProvider": {
+    "message": "Công cụ dịch"
+  },
+  "translateLoading": {
+    "message": "Đang dịch…"
+  },
+  "translateUnsupportedPage": {
+    "message": "Không thể dịch trang này"
+  },
+  "translateInjectFailed": {
+    "message": "Không kết nối được trang. Hãy tải lại và thử lại."
+  },
+  "skipTitle": {
+    "message": "Quy tắc bỏ qua"
+  },
+  "skipHint": {
+    "message": "CSS selector không dịch. Có sẵn: .notranslate, [translate=no], [data-ceb-skip]."
+  },
+  "skipSelectorPlaceholder": {
+    "message": ".sidebar, #logo, nav a…"
+  },
+  "skipAddSite": {
+    "message": "Thêm cho site"
+  },
+  "skipAddGlobal": {
+    "message": "Thêm toàn cục"
+  },
+  "skipPick": {
+    "message": "Chọn trên trang"
+  },
+  "skipSiteLabel": {
+    "message": "Site này"
+  },
+  "skipGlobalLabel": {
+    "message": "Toàn cục"
+  },
+  "skipEmpty": {
+    "message": "Trống"
+  },
+  "openSettings": {
+    "message": "Mở cài đặt"
+  }
+}

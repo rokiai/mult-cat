@@ -1,0 +1,96 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "MultCat bilingual translate with selection and LLM support"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "MultCat"
+  },
+  "toggleTheme": {
+    "message": "Toggle theme"
+  },
+  "injectButton": {
+    "message": "Click to inject Content Scripts"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "Hello, My name is $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "John Doe"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "Hello $1"
+  },
+  "displayErrorInfo": {
+    "message": "Error occur"
+  },
+  "displayErrorDescription": {
+    "message": "Sorry, something went wrong while loading the page."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Error details:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Unknown error"
+  },
+  "displayErrorReset": {
+    "message": "Run Again"
+  },
+  "translateTitle": {
+    "message": "Bilingual Translate"
+  },
+  "translateButton": {
+    "message": "Translate page"
+  },
+  "translateClose": {
+    "message": "Restore original"
+  },
+  "translateProvider": {
+    "message": "Provider"
+  },
+  "translateLoading": {
+    "message": "Translating…"
+  },
+  "translateUnsupportedPage": {
+    "message": "This page cannot be translated"
+  },
+  "translateInjectFailed": {
+    "message": "Could not reach this page. Refresh the tab and try again."
+  },
+  "skipTitle": {
+    "message": "Skip rules"
+  },
+  "skipHint": {
+    "message": "CSS selectors that should not be translated. Built-in: .notranslate, [translate=no], [data-ceb-skip]."
+  },
+  "skipSelectorPlaceholder": {
+    "message": ".sidebar, #logo, nav a…"
+  },
+  "skipAddSite": {
+    "message": "Add for site"
+  },
+  "skipAddGlobal": {
+    "message": "Add global"
+  },
+  "skipPick": {
+    "message": "Pick on page"
+  },
+  "skipSiteLabel": {
+    "message": "This site"
+  },
+  "skipGlobalLabel": {
+    "message": "Global"
+  },
+  "skipEmpty": {
+    "message": "None yet"
+  },
+  "openSettings": {
+    "message": "Open settings"
+  }
+}

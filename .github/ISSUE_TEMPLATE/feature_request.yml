@@ -1,0 +1,56 @@
+name: 功能建议
+description: 为 MultCat 提出改进或新功能想法
+title: '[Feature]: '
+labels: ['enhancement']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        欢迎提出想法。请说明使用场景，方便评估优先级。
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 相关模块
+      options:
+        - Popup 弹窗
+        - 网页双语翻译
+        - 划词翻译
+        - 设置页 / 教程
+        - 翻译引擎 / 大模型
+        - 免 / 安装 / Release
+        - 文档
+        - 其它
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: 背景 / 痛点
+      description: 你想解决什么问题？
+      placeholder: 例如：在某某站点双语对照时…
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: 期望方案
+      description: 你希望如何改进？
+      placeholder: 描述理想的交互或能力。
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 备选方案
+      description: 是否考虑过其它做法？
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 补充信息
+      description: 截图、参考链接等。

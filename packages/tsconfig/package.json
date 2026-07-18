@@ -1,0 +1,15 @@
+{
+  "name": "@extension/tsconfig",
+  "version": "0.5.0",
+  "description": "chrome extension - tsconfig",
+  "private": true,
+  "sideEffects": false,
+  "exports": {
+    "./base": "./base.json",
+    "./base.json": "./base.json",
+    "./app": "./app.json",
+    "./app.json": "./app.json",
+    "./module": "./module.json",
+    "./module.json": "./module.json"
+  }
+}

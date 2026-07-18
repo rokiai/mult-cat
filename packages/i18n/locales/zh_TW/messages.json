@@ -1,0 +1,96 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "MultCat 雙語對照翻譯，支援劃詞與大模型"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "MultCat"
+  },
+  "toggleTheme": {
+    "message": "切換主題"
+  },
+  "injectButton": {
+    "message": "注入內容腳本"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "你好，我叫 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "小明"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "你好，$1"
+  },
+  "displayErrorInfo": {
+    "message": "發生錯誤"
+  },
+  "displayErrorDescription": {
+    "message": "抱歉，載入頁面時發生問題。"
+  },
+  "displayErrorDetailsInfo": {
+    "message": "錯誤詳情："
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "未知錯誤"
+  },
+  "displayErrorReset": {
+    "message": "再試一次"
+  },
+  "translateTitle": {
+    "message": "雙語對照翻譯"
+  },
+  "translateButton": {
+    "message": "翻譯頁面"
+  },
+  "translateClose": {
+    "message": "還原原文"
+  },
+  "translateProvider": {
+    "message": "翻譯引擎"
+  },
+  "translateLoading": {
+    "message": "翻譯中…"
+  },
+  "translateUnsupportedPage": {
+    "message": "此頁面無法翻譯"
+  },
+  "translateInjectFailed": {
+    "message": "無法連線此頁面，請重新整理後再試"
+  },
+  "skipTitle": {
+    "message": "免翻規則"
+  },
+  "skipHint": {
+    "message": "不翻譯的 CSS 選擇器。內建：.notranslate、[translate=no]、[data-ceb-skip]。"
+  },
+  "skipSelectorPlaceholder": {
+    "message": ".sidebar, #logo, nav a…"
+  },
+  "skipAddSite": {
+    "message": "加入本站"
+  },
+  "skipAddGlobal": {
+    "message": "加入全域"
+  },
+  "skipPick": {
+    "message": "頁面點選"
+  },
+  "skipSiteLabel": {
+    "message": "本站"
+  },
+  "skipGlobalLabel": {
+    "message": "全域"
+  },
+  "skipEmpty": {
+    "message": "尚無"
+  },
+  "openSettings": {
+    "message": "開啟設定"
+  }
+}

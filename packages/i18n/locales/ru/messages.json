@@ -1,0 +1,96 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "MultCat bilingual translation extension"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "MultCat"
+  },
+  "toggleTheme": {
+    "message": "Сменить тему"
+  },
+  "injectButton": {
+    "message": "Внедрить content scripts"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "Здравствуйте, меня зовут $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Иван"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "Здравствуйте, $1"
+  },
+  "displayErrorInfo": {
+    "message": "Произошла ошибка"
+  },
+  "displayErrorDescription": {
+    "message": "К сожалению, при загрузке страницы возникла проблема."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Подробности ошибки:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Неизвестная ошибка"
+  },
+  "displayErrorReset": {
+    "message": "Повторить"
+  },
+  "translateTitle": {
+    "message": "Двуязычный перевод"
+  },
+  "translateButton": {
+    "message": "Перевести страницу"
+  },
+  "translateClose": {
+    "message": "Восстановить оригинал"
+  },
+  "translateProvider": {
+    "message": "Движок"
+  },
+  "translateLoading": {
+    "message": "Перевод…"
+  },
+  "translateUnsupportedPage": {
+    "message": "Эту страницу нельзя перевести"
+  },
+  "translateInjectFailed": {
+    "message": "Не удалось подключиться к странице. Обновите и попробуйте снова."
+  },
+  "skipTitle": {
+    "message": "Правила исключения"
+  },
+  "skipHint": {
+    "message": "CSS-селекторы без перевода. Встроенные: .notranslate, [translate=no], [data-ceb-skip]."
+  },
+  "skipSelectorPlaceholder": {
+    "message": ".sidebar, #logo, nav a…"
+  },
+  "skipAddSite": {
+    "message": "Добавить для сайта"
+  },
+  "skipAddGlobal": {
+    "message": "Добавить глобально"
+  },
+  "skipPick": {
+    "message": "Выбрать на странице"
+  },
+  "skipSiteLabel": {
+    "message": "Этот сайт"
+  },
+  "skipGlobalLabel": {
+    "message": "Глобально"
+  },
+  "skipEmpty": {
+    "message": "Пусто"
+  },
+  "openSettings": {
+    "message": "Открыть настройки"
+  }
+}

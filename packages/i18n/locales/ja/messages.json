@@ -1,0 +1,96 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "MultCat 対訳拡張。選択翻訳と LLM に対応"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "MultCat"
+  },
+  "toggleTheme": {
+    "message": "テーマ切替"
+  },
+  "injectButton": {
+    "message": "コンテンツスクリプトを注入"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "こんにちは、私の名前は $NAME$ です",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "太郎"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "こんにちは、$1 さん"
+  },
+  "displayErrorInfo": {
+    "message": "エラーが発生しました"
+  },
+  "displayErrorDescription": {
+    "message": "ページの読み込み中に問題が発生しました。"
+  },
+  "displayErrorDetailsInfo": {
+    "message": "エラー詳細："
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "不明なエラー"
+  },
+  "displayErrorReset": {
+    "message": "再実行"
+  },
+  "translateTitle": {
+    "message": "対訳翻訳"
+  },
+  "translateButton": {
+    "message": "ページを翻訳"
+  },
+  "translateClose": {
+    "message": "原文に戻す"
+  },
+  "translateProvider": {
+    "message": "翻訳エンジン"
+  },
+  "translateLoading": {
+    "message": "翻訳中…"
+  },
+  "translateUnsupportedPage": {
+    "message": "このページは翻訳できません"
+  },
+  "translateInjectFailed": {
+    "message": "ページに接続できません。再読み込みして再試行してください"
+  },
+  "skipTitle": {
+    "message": "除外ルール"
+  },
+  "skipHint": {
+    "message": "翻訳しない CSS セレクタ。組み込み: .notranslate, [translate=no], [data-ceb-skip]。"
+  },
+  "skipSelectorPlaceholder": {
+    "message": ".sidebar, #logo, nav a…"
+  },
+  "skipAddSite": {
+    "message": "このサイトに追加"
+  },
+  "skipAddGlobal": {
+    "message": "全体に追加"
+  },
+  "skipPick": {
+    "message": "ページで選択"
+  },
+  "skipSiteLabel": {
+    "message": "このサイト"
+  },
+  "skipGlobalLabel": {
+    "message": "全体"
+  },
+  "skipEmpty": {
+    "message": "なし"
+  },
+  "openSettings": {
+    "message": "設定を開く"
+  }
+}

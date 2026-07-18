@@ -19,12 +19,12 @@ After a `v*` git tag is pushed, GitHub Actions builds and publishes to **Release
   <a href="https://github.com/rokiai/mult-cat/releases/latest"><img alt="Latest Release" src="https://img.shields.io/github/v/release/rokiai/mult-cat?label=release&style=flat-square" /></a>
 </p>
 
-**Current version: [v0.5.1](https://github.com/rokiai/mult-cat/releases/tag/v0.5.1)** · [All releases](https://github.com/rokiai/mult-cat/releases)
+**Current version: [v0.5.2](https://github.com/rokiai/mult-cat/releases/tag/v0.5.2)** · [All releases](https://github.com/rokiai/mult-cat/releases)
 
 | Browser | Latest package | This version |
 | --- | --- | --- |
-| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.1](https://github.com/rokiai/mult-cat/releases/download/v0.5.1/MultCat-0.5.1-chrome.zip) |
-| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.1](https://github.com/rokiai/mult-cat/releases/download/v0.5.1/MultCat-0.5.1-firefox.xpi) |
+| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.2](https://github.com/rokiai/mult-cat/releases/download/v0.5.2/MultCat-0.5.2-chrome.zip) |
+| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.2](https://github.com/rokiai/mult-cat/releases/download/v0.5.2/MultCat-0.5.2-firefox.xpi) |
 
 Install (Chrome): download the zip → unzip → open `chrome://extensions` → enable Developer mode → **Load unpacked** → select the unzipped folder.
 <!-- release-download:end -->

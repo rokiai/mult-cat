@@ -10,7 +10,7 @@ jobs:
     name: Prettier
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run Prettier
         id: prettier-run
         uses: rutajdash/prettier-cli-action@v1.0.2

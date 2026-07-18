@@ -42,7 +42,7 @@ export const yandexAdapter: ProviderAdapter = {
     };
   },
 
-  parseResponse(data: unknown, originalText: string, _mappedTo: string): TranslateResult {
+  parseResponse(data: unknown, originalText: string): TranslateResult {
     const res = data as YandexResponse;
     if (res.code && res.code !== 200) {
       throw new Error(`Yandex error code ${res.code}`);

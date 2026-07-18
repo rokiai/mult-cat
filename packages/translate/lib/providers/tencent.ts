@@ -45,7 +45,7 @@ export const tencentAdapter: ProviderAdapter = {
     };
   },
 
-  parseResponse(data: unknown, originalText: string, _mappedTo: string): TranslateResult {
+  parseResponse(data: unknown, originalText: string): TranslateResult {
     const res = data as TencentResponse;
     if (res.header?.ret_code && res.header.ret_code !== 'succ') {
       throw new Error(res.message || `Tencent error: ${res.header.ret_code}`);

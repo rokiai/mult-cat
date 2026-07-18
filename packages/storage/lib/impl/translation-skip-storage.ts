@@ -1,14 +1,14 @@
 import { createStorage, StorageEnum } from '../base/index.js';
 import type { BaseStorageType } from '../base/index.js';
 
-export type TranslationSkipState = {
+type TranslationSkipState = {
   /** Selectors applied on every site. */
   globalSelectors: string[];
   /** hostname → selectors */
   byHost: Record<string, string[]>;
 };
 
-export type TranslationSkipStorageType = BaseStorageType<TranslationSkipState> & {
+type TranslationSkipStorageType = BaseStorageType<TranslationSkipState> & {
   addGlobal: (selector: string) => Promise<void>;
   addForHost: (host: string, selector: string) => Promise<void>;
   removeGlobal: (selector: string) => Promise<void>;
@@ -36,7 +36,7 @@ const storage = createStorage<TranslationSkipState>(
   },
 );
 
-export const translationSkipStorage: TranslationSkipStorageType = {
+const translationSkipStorage: TranslationSkipStorageType = {
   ...storage,
   addGlobal: async selector => {
     await storage.set(current => ({
@@ -85,9 +85,12 @@ export const translationSkipStorage: TranslationSkipStorageType = {
 };
 
 /** Always-on selectors (HTML / Google Translate conventions + our mark). */
-export const BUILTIN_SKIP_SELECTORS = [
+const BUILTIN_SKIP_SELECTORS = [
   '.notranslate',
   '[translate="no"]',
   '[data-ceb-skip]',
   '[contenteditable="true"]',
 ] as const;
+
+export { translationSkipStorage, BUILTIN_SKIP_SELECTORS };
+export type { TranslationSkipState, TranslationSkipStorageType };

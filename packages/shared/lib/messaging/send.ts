@@ -9,7 +9,7 @@ const delay = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, m
 const isNoReceiverError = (message: string): boolean =>
   /Receiving end does not exist|Could not establish connection/i.test(message);
 
-export const sendToBackground = async <T extends ExtensionResponse = ExtensionResponse>(
+const sendToBackground = async <T extends ExtensionResponse = ExtensionResponse>(
   message: ExtensionMessage,
 ): Promise<T> =>
   new Promise((resolve, reject) => {
@@ -65,7 +65,7 @@ const sendToTabWithRetries = async <T extends ExtensionResponse>(
  * - Dev (HMR stub): also import `*_dev.js` via absolute chrome-extension URL
  *   (relative import inside the stub breaks under executeScript)
  */
-export const ensureContentScript = async (tabId: number): Promise<void> => {
+const ensureContentScript = async (tabId: number): Promise<void> => {
   await chrome.scripting
     .executeScript({
       target: { tabId },
@@ -88,7 +88,7 @@ export const ensureContentScript = async (tabId: number): Promise<void> => {
  * Retries + programmatic inject cover: page opened before extension load, and
  * dev HMR stubs that register the listener only after async import().
  */
-export const sendToTab = async <T extends ExtensionResponse = ExtensionResponse>(
+const sendToTab = async <T extends ExtensionResponse = ExtensionResponse>(
   tabId: number,
   message: ExtensionMessage,
 ): Promise<T> => {
@@ -105,7 +105,7 @@ export const sendToTab = async <T extends ExtensionResponse = ExtensionResponse>
   }
 };
 
-export const translateTextViaBackground = async (payload: TranslateRequest): Promise<TranslateResult> => {
+const translateTextViaBackground = async (payload: TranslateRequest): Promise<TranslateResult> => {
   const response = await sendToBackground<TranslateTextResultMessage>({
     type: 'TRANSLATE_TEXT',
     payload,
@@ -117,3 +117,5 @@ export const translateTextViaBackground = async (payload: TranslateRequest): Pro
 
   return response.result;
 };
+
+export { sendToBackground, ensureContentScript, sendToTab, translateTextViaBackground };

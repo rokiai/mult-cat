@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-export type TranslationProviderLogoId = 'microsoft' | 'google' | 'yandex' | 'tencent' | 'openai';
+type TranslationProviderLogoId = 'microsoft' | 'google' | 'yandex' | 'tencent' | 'openai';
 
 type Props = {
   provider: TranslationProviderLogoId | string;
@@ -9,7 +9,7 @@ type Props = {
   style?: CSSProperties;
 };
 
-export const ProviderLogo = ({ provider, size = 18, className, style }: Props) => {
+const ProviderLogo = ({ provider, size = 18, className, style }: Props) => {
   const common = {
     width: size,
     height: size,
@@ -105,3 +105,6 @@ export const ProviderLogo = ({ provider, size = 18, className, style }: Props) =
       );
   }
 };
+
+export { ProviderLogo };
+export type { TranslationProviderLogoId };

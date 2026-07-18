@@ -1,4 +1,4 @@
-export type SiteRule = {
+type SiteRule = {
   /** Host patterns: `*`, `example.com`, `*.example.com`. */
   matches: string[];
   /** Hosts that should not use this rule even if matches. */
@@ -7,13 +7,13 @@ export type SiteRule = {
   excludeSelectors: string[];
 };
 
-export type ResolvedSiteRules = {
+type ResolvedSiteRules = {
   excludeSelectors: string[];
   matchedRules: SiteRule[];
 };
 
 /** Match hostname against patterns (`*`, `example.com`, `*.example.com`). */
-export const matchHost = (hostname: string, pattern: string): boolean => {
+const matchHost = (hostname: string, pattern: string): boolean => {
   const host = hostname.trim().toLowerCase();
   const pat = pattern.trim().toLowerCase();
   if (!host || !pat) return false;
@@ -44,7 +44,7 @@ const unique = (list: string[]): string[] => {
 };
 
 /** Merge builtin skip selectors for a hostname (`*` + site-specific). */
-export const resolveSiteRules = (hostname: string, rules: readonly SiteRule[]): ResolvedSiteRules => {
+const resolveSiteRules = (hostname: string, rules: readonly SiteRule[]): ResolvedSiteRules => {
   const matched = rules.filter(rule => ruleMatchesHost(rule, hostname));
   return {
     excludeSelectors: unique(matched.flatMap(r => r.excludeSelectors ?? [])),
@@ -53,8 +53,11 @@ export const resolveSiteRules = (hostname: string, rules: readonly SiteRule[]): 
 };
 
 /** Human-readable label for Settings (first non-* match, else Global). */
-export const siteRuleLabel = (rule: SiteRule): string => {
+const siteRuleLabel = (rule: SiteRule): string => {
   const nonStar = rule.matches.filter(m => m !== '*');
   if (nonStar.length === 0) return '* (global)';
   return nonStar.slice(0, 3).join(', ') + (nonStar.length > 3 ? '…' : '');
 };
+
+export { matchHost, resolveSiteRules, siteRuleLabel };
+export type { SiteRule, ResolvedSiteRules };

@@ -70,7 +70,7 @@ export const openaiAdapter: ProviderAdapter = {
     };
   },
 
-  parseResponse(data: unknown, originalText: string, _mappedTo: string): TranslateResult {
+  parseResponse(data: unknown, originalText: string): TranslateResult {
     const res = data as OpenAIChatResponse;
     const text = (res.choices?.[0]?.message?.content ?? '').trim();
     const sameLang = !text || text === originalText;

@@ -1,8 +1,7 @@
 import { CUSTOM_LLM_MODEL_VALUE, LLM_VENDORS, getLlmVendor } from './llm-vendors.js';
-import { UI_LOCALE_OPTIONS, resolveUiLocale } from './ui-locale.js';
 import { createStorage, StorageEnum } from '../base/index.js';
 import type { LlmModelOption, LlmVendorId, LlmVendorOption } from './llm-vendors.js';
-import type { UiLocaleId, UiLocaleOption } from './ui-locale.js';
+import type { UiLocaleId } from './ui-locale.js';
 import type { BaseStorageType } from '../base/index.js';
 
 type TranslationProviderId = 'google' | 'microsoft' | 'yandex' | 'tencent' | 'openai';
@@ -149,8 +148,6 @@ export {
   CUSTOM_LLM_MODEL_VALUE,
   LLM_VENDORS,
   getLlmVendor,
-  UI_LOCALE_OPTIONS,
-  resolveUiLocale,
 };
 export type {
   TranslationProviderId,
@@ -161,6 +158,4 @@ export type {
   LlmVendorId,
   LlmModelOption,
   LlmVendorOption,
-  UiLocaleId,
-  UiLocaleOption,
 };

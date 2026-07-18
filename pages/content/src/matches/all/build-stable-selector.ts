@@ -24,7 +24,7 @@ const isUnstableClass = (className: string): boolean => {
  * Extract a stable local name from hashed module classes.
  * `styles-module__contextCrumbLast__tI2e3` → `contextCrumbLast`
  */
-export const extractCssModuleLocalName = (className: string): string | null => {
+const extractCssModuleLocalName = (className: string): string | null => {
   const matched = className.match(CSS_MODULE_CLASS);
   if (!matched?.[1]) return null;
   const local = matched[1];
@@ -54,7 +54,7 @@ const buildStructuralSelector = (el: HTMLElement): string => {
   return parts.join(' > ') || el.tagName.toLowerCase();
 };
 
-export const buildStableSelector = (el: HTMLElement): string => {
+const buildStableSelector = (el: HTMLElement): string => {
   const tag = el.tagName.toLowerCase();
 
   if (el.id && /^[A-Za-z][\w-]*$/.test(el.id)) {
@@ -89,3 +89,5 @@ export const buildStableSelector = (el: HTMLElement): string => {
 
   return buildStructuralSelector(el);
 };
+
+export { extractCssModuleLocalName, buildStableSelector };

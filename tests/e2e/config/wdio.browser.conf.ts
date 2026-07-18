@@ -19,7 +19,8 @@ const chromeCapabilities = {
       '--disable-gpu',
       '--no-sandbox',
       '--disable-dev-shm-usage',
-      ...(IS_CI ? ['--headless'] : []),
+      // Old `--headless` does not load extensions; new mode is required in CI.
+      ...(IS_CI ? ['--headless=new'] : []),
     ],
     prefs: { 'extensions.ui.developer_mode': true },
     extensions: [bundledExtension],
@@ -38,7 +39,8 @@ export const config: WebdriverIO.Config = {
   ...baseConfig,
   capabilities: IS_FIREFOX ? [firefoxCapabilities] : [chromeCapabilities],
 
-  maxInstances: IS_CI ? 10 : 1,
+  // Keep sequential in CI to avoid flaky extension discovery across workers.
+  maxInstances: 1,
   logLevel: 'error',
   execArgv: IS_CI ? [] : ['--inspect'],
   before: async ({ browserName }: WebdriverIO.Capabilities, _specs, browser: WebdriverIO.Browser) => {

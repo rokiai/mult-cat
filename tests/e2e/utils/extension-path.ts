@@ -5,23 +5,38 @@
  */
 export const getChromeExtensionPath = async (browser: WebdriverIO.Browser) => {
   await browser.url('chrome://extensions/');
+
   /**
    * https://webdriver.io/docs/extension-testing/web-extensions/#test-popup-modal-in-chrome
-   * ```ts
-   * const extensionItem = await $('extensions-item').getElement();
-   * ```
-   * The above code is not working. I guess it's because the shadow root is not accessible.
-   * So I used the following code to access the shadow root manually.
    *
-   *  @url https://github.com/webdriverio/webdriverio/issues/13521
+   * Shadow DOM on chrome://extensions must be walked manually.
+   * @url https://github.com/webdriverio/webdriverio/issues/13521
    */
-  const extensionItem = await (async () => {
-    const extensionsManager = await $('extensions-manager').getElement();
-    const itemList = await extensionsManager.shadow$('#container > #viewManager > extensions-item-list');
-    return itemList.shadow$('extensions-item');
-  })();
+  const extensionId = await browser.waitUntil(
+    async () => {
+      const extensionsManager = await $('extensions-manager');
+      if (!(await extensionsManager.isExisting())) {
+        return false;
+      }
 
-  const extensionId = await extensionItem.getAttribute('id');
+      const itemList = await extensionsManager.shadow$('#container > #viewManager > extensions-item-list');
+      if (!(await itemList.isExisting())) {
+        return false;
+      }
+
+      const extensionItem = await itemList.shadow$('extensions-item');
+      if (!(await extensionItem.isExisting())) {
+        return false;
+      }
+
+      return extensionItem.getAttribute('id');
+    },
+    {
+      timeout: 20000,
+      interval: 500,
+      timeoutMsg: 'Chrome extension did not appear on chrome://extensions (need --headless=new in CI)',
+    },
+  );
 
   if (!extensionId) {
     throw new Error('Extension ID not found');

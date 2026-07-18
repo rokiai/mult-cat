@@ -107,11 +107,23 @@ pnpm zip          # → dist-zip/
 
 ### 发版（GitHub Release）
 
+发版前先手工写好更新日志（CI **不会**自动改这两处）：
+
+1. **`CHANGELOG.md`**：按 [Keep a Changelog](https://keepachangelog.com/) 在顶部加新版本（`新增` / `变更` / `修复` 等）
+2. **`pages/options/src/changelog.ts`**：同步精简亮点到设置页「更新日志」（`zh` / `en` 各一条）
+3. （可选）本文件「更新日志」小节补一句摘要
+
+然后对齐版本、提交并打 tag：
+
 ```bash
-# 可选：对齐 package.json 版本
+# 将 0.5.1 换成目标版本
 pnpm update-version 0.5.1
 
-git add -A && git commit -m "chore: release v0.5.1"
+git add CHANGELOG.md pages/options/src/changelog.ts README.md package.json
+# 若 update-version 还改了子包 package.json，一并加入
+git add -u
+
+git commit -m "chore: release v0.5.1"
 git tag v0.5.1
 git push origin HEAD
 git push origin v0.5.1
@@ -120,8 +132,8 @@ git push origin v0.5.1
 推送 `v*` tag 后，[`.github/workflows/release.yml`](.github/workflows/release.yml) 会：
 
 1. 构建 Chrome zip / Firefox xpi  
-2. 创建 GitHub Release 并上传安装包  
-3. 更新 README 下载链接并推回默认分支  
+2. 创建 GitHub Release 并上传安装包（`generate_release_notes` 会按 commit 生成 Release 说明，**不等于**仓库 `CHANGELOG.md`）  
+3. 仅自动更新 README 下载链接并推回默认分支  
 
 ## 使用说明（用户）
 

@@ -17,12 +17,12 @@
   <a href="https://github.com/rokiai/mult-cat/releases/latest"><img alt="Latest Release" src="https://img.shields.io/github/v/release/rokiai/mult-cat?label=release&style=flat-square" /></a>
 </p>
 
-**当前版本：[v0.5.0](https://github.com/rokiai/mult-cat/releases/tag/v0.5.0)** · [全部 Releases](https://github.com/rokiai/mult-cat/releases)
+**当前版本：[v0.5.1](https://github.com/rokiai/mult-cat/releases/tag/v0.5.1)** · [全部 Releases](https://github.com/rokiai/mult-cat/releases)
 
 | 浏览器 | 最新安装包 | 本版本 |
 | --- | --- | --- |
-| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.0](https://github.com/rokiai/mult-cat/releases/download/v0.5.0/MultCat-0.5.0-chrome.zip) |
-| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.0](https://github.com/rokiai/mult-cat/releases/download/v0.5.0/MultCat-0.5.0-firefox.xpi) |
+| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.1](https://github.com/rokiai/mult-cat/releases/download/v0.5.1/MultCat-0.5.1-chrome.zip) |
+| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.1](https://github.com/rokiai/mult-cat/releases/download/v0.5.1/MultCat-0.5.1-firefox.xpi) |
 
 安装（Chrome）：下载 zip → 解压 → 打开 `chrome://extensions` → 开启开发者模式 → **加载已解压的扩展程序** → 选择解压后的文件夹。
 <!-- release-download:end -->

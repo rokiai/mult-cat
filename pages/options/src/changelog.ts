@@ -6,6 +6,16 @@ type ChangelogItem = {
 
 const zh: ChangelogItem[] = [
   {
+    version: '0.5.2',
+    date: '2026-07-18',
+    highlights: [
+      '免翻规则支持导出与合并导入',
+      '内置站点规则优先拉取线上 JSON，失败回退本地',
+      '关于页增加 GitHub / Issues 入口；README 中英双语',
+      'Popup 隐藏外层滚动条',
+    ],
+  },
+  {
     version: '0.5.1',
     date: '2026-07-18',
     highlights: ['修复：双语模式下划词弹层不再被二次对照'],
@@ -25,6 +35,16 @@ const zh: ChangelogItem[] = [
 ];
 
 const en: ChangelogItem[] = [
+  {
+    version: '0.5.2',
+    date: '2026-07-18',
+    highlights: [
+      'Export / merge-import user skip rules (JSON)',
+      'Builtin site rules prefer remote GitHub JSON with local fallback',
+      'About links to GitHub / Issues; bilingual README',
+      'Hide popup outer scrollbar',
+    ],
+  },
   {
     version: '0.5.1',
     date: '2026-07-18',

@@ -73,6 +73,11 @@ Select text for translation, IPA, definitions, and audio.
 
 Full notes: [`CHANGELOG.md`](./CHANGELOG.md).
 
+### 0.5.2 — 2026-07-18
+
+- Export / merge-import user skip rules; remote builtin site rules with local fallback
+- About GitHub / Issues links; bilingual README; hide popup scrollbar
+
 ### 0.5.1 — 2026-07-18
 
 - Fix: selection popup is no longer bilingual-translated during page bilingual mode

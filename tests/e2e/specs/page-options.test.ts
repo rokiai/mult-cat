@@ -1,13 +1,19 @@
-import { canSwitchTheme } from '../helpers/theme.js';
-
 describe('Webextension Options Page', () => {
-  it('should make options page accessible', async () => {
+  it('should make MultCat options page accessible', async () => {
     const extensionPath = await browser.getExtensionPath();
     const optionsUrl = `${extensionPath}/options/index.html`;
 
     await browser.url(optionsUrl);
 
     await expect(browser).toHaveTitle('Options');
-    await canSwitchTheme();
+
+    const shell = await $('.settings-shell').getElement();
+    await expect(shell).toBeExisting();
+
+    const brand = await $('.settings-brand-name').getElement();
+    await expect(brand).toHaveText('MultCat');
+
+    const guide = await $('#guide').getElement();
+    await expect(guide).toBeExisting();
   });
 });

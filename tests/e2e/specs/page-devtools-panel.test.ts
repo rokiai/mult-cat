@@ -1,5 +1,3 @@
-import { canSwitchTheme } from '../helpers/theme.js';
-
 describe('Webextension DevTools Panel', () => {
   it('should make DevTools panel available', async () => {
     const extensionPath = await browser.getExtensionPath();
@@ -7,6 +5,8 @@ describe('Webextension DevTools Panel', () => {
 
     await browser.url(devtoolsPanelUrl);
     await expect(browser).toHaveTitle('Devtools Panel');
-    await canSwitchTheme();
+
+    const app = await $('.App').getElement();
+    await expect(app).toBeExisting();
   });
 });

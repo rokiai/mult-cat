@@ -4,100 +4,102 @@
 
 <h1 align="center">MultCat</h1>
 
-<p align="center"><strong>多语翻译猫</strong> — 浏览器翻译扩展（Chrome / Chromium / Firefox），源码公开，禁止商业使用。</p>
+<p align="center"><strong>English</strong> · <a href="./README.zh-CN.md">中文</a></p>
 
-<p align="center">网页双语对照、划词翻译、多引擎切换，设置与数据均保存在本地。</p>
+<p align="center"><strong>Multilingual Translation Cat</strong> — a browser translation extension for Chrome / Chromium / Firefox. Source is public; commercial use is not allowed.</p>
 
-## 下载安装
+<p align="center">Bilingual webpage translation, selection lookup, multi-engine switching. Settings and data stay on your device.</p>
 
-推送形如 `v0.5.0` 的 git tag 后，GitHub Actions 会自动构建并发布到 **Releases**。
+## Download & install
+
+After a `v*` git tag is pushed, GitHub Actions builds and publishes to **Releases**.
 
 <!-- release-download:start -->
 <p align="center">
   <a href="https://github.com/rokiai/mult-cat/releases/latest"><img alt="Latest Release" src="https://img.shields.io/github/v/release/rokiai/mult-cat?label=release&style=flat-square" /></a>
 </p>
 
-**当前版本：[v0.5.1](https://github.com/rokiai/mult-cat/releases/tag/v0.5.1)** · [全部 Releases](https://github.com/rokiai/mult-cat/releases)
+**Current version: [v0.5.1](https://github.com/rokiai/mult-cat/releases/tag/v0.5.1)** · [All releases](https://github.com/rokiai/mult-cat/releases)
 
-| 浏览器 | 最新安装包 | 本版本 |
+| Browser | Latest package | This version |
 | --- | --- | --- |
 | Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.1](https://github.com/rokiai/mult-cat/releases/download/v0.5.1/MultCat-0.5.1-chrome.zip) |
 | Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.1](https://github.com/rokiai/mult-cat/releases/download/v0.5.1/MultCat-0.5.1-firefox.xpi) |
 
-安装（Chrome）：下载 zip → 解压 → 打开 `chrome://extensions` → 开启开发者模式 → **加载已解压的扩展程序** → 选择解压后的文件夹。
+Install (Chrome): download the zip → unzip → open `chrome://extensions` → enable Developer mode → **Load unpacked** → select the unzipped folder.
 <!-- release-download:end -->
 
-## 功能
+## Features
 
-| 功能 | 说明 |
+| Feature | Description |
 | --- | --- |
-| **网页双语翻译** | 一键双语对照；按可视区域懒加载翻译，滚动时继续加载，可随时还原 |
-| **划词翻译** | 选中网页文字即可翻译（可在设置中开关） |
-| **弹窗文本翻译** | 在 Popup 输入/粘贴文本，`⌘/Ctrl + Enter` 快速翻译 |
-| **多翻译引擎** | Google、Microsoft、Yandex、腾讯交互翻译，以及 OpenAI 兼容大模型 |
-| **大模型接入** | 支持 OpenAI、Kimi、DeepSeek、智谱、通义、豆包、硅基流动、OpenRouter 及自定义网关 |
-| **免翻区域** | Popup 点选、用户 CSS 规则，以及仓库内自维护的免翻 JSON（欢迎 PR） |
-| **词典详情 + 发音** | 划词 / Popup 短词显示音标、词性释义，并支持发音播放 |
-| **多语言界面** | 中文、英文、日语、韩语等本地化界面 |
-| **本地存储** | API Token 与偏好仅保存在浏览器本地，不经过第三方中转 |
+| **Bilingual page translate** | One-click bilingual view; viewport lazy-load while scrolling; restore anytime |
+| **Selection translate** | Select page text to translate (toggle in settings) |
+| **Popup text translate** | Paste or type in Popup; `⌘/Ctrl + Enter` to translate |
+| **Multiple engines** | Google, Microsoft, Yandex, Tencent Interactive, plus OpenAI-compatible LLMs |
+| **LLM providers** | OpenAI, Kimi, DeepSeek, Zhipu, Tongyi, Doubao, SiliconFlow, OpenRouter, and custom gateways |
+| **Skip areas** | Popup pick mode, user CSS rules, import/export, and maintainer JSON (PRs welcome) |
+| **Dictionary + audio** | Short words show IPA, definitions, and pronunciation |
+| **Localized UI** | Chinese, English, Japanese, Korean, and more |
+| **Local storage** | API tokens and preferences stay in the browser only |
 
-## 截图
+## Screenshots
 
 ### Popup
 
-翻译服务、本地语言、网页双语、免翻点选与文本翻译。
+Engine, UI language, page bilingual, skip pick, and text translate.
 
 <p align="center">
   <img src="docs/screenshots/popup.png" width="320" alt="MultCat Popup" />
 </p>
 
-### 设置页 · 使用教程
+### Settings · guide
 
-欢迎引导、快速上手六步与侧栏设置入口。
+Welcome banner, six-step quick start, and sidebar settings.
 
 <p align="center">
   <img src="docs/screenshots/settings-guide.png" width="720" alt="MultCat Settings Guide" />
 </p>
 
-### 划词翻译
+### Selection translate
 
-选中文字即可查看译文、音标与释义，并支持发音。
+Select text for translation, IPA, definitions, and audio.
 
 <p align="center">
   <img src="docs/screenshots/selection-translate.png" width="560" alt="MultCat Selection Translate" />
 </p>
 
-## 更新日志
+## Changelog
 
-完整记录见 [`CHANGELOG.md`](./CHANGELOG.md)。
+Full notes: [`CHANGELOG.md`](./CHANGELOG.md).
 
 ### 0.5.1 — 2026-07-18
 
-- 修复：双语模式下划词弹层不再被二次对照
+- Fix: selection popup is no longer bilingual-translated during page bilingual mode
 
 ### 0.5.0 — 2026-07-18
 
-- MultCat 品牌与全新设置页 / Popup 视觉  
-- 网页双语：视口懒加载，滚动继续翻译，可还原  
-- 划词 / Popup：短词音标、释义与发音  
-- 多引擎：Google / Microsoft / Yandex / 腾讯，及 OpenAI 兼容大模型  
-- 免翻区域：点选、自定义选择器、内置站点规则（可 PR）  
-- 多语言界面与本地存储偏好  
+- MultCat branding and refreshed Settings / Popup UI
+- Bilingual page: viewport lazy-load, continue on scroll, restore
+- Selection / Popup: IPA, definitions, and audio for short words
+- Engines: Google / Microsoft / Yandex / Tencent + OpenAI-compatible LLMs
+- Skip areas: pick mode, custom selectors, builtin site rules (PRs welcome)
+- Localized UI and local-only preferences
 
-## 快速开始（开发）
+## Quick start (development)
 
 ```bash
-# 需要 Node.js（见 .nvmrc）与 pnpm
+# Node.js (see .nvmrc) and pnpm required
 pnpm install
-pnpm dev          # Chrome 开发构建 → dist/
+pnpm dev          # Chrome dev build → dist/
 # pnpm dev:firefox
 ```
 
-1. 打开 `chrome://extensions`
-2. 开启 **开发者模式**
-3. **加载已解压的扩展程序** → 选择项目里的 `dist` 目录
+1. Open `chrome://extensions`
+2. Enable **Developer mode**
+3. **Load unpacked** → select the project `dist` folder
 
-生产构建 / 本地打 zip：
+Production build / zip locally:
 
 ```bash
 pnpm build
@@ -105,22 +107,22 @@ pnpm zip          # → dist-zip/
 # pnpm zip:firefox
 ```
 
-### 发版（GitHub Release）
+### Release (GitHub Release)
 
-发版前先手工写好更新日志（CI **不会**自动改这两处）：
+Write changelog entries **before** tagging (CI does **not** auto-update these):
 
-1. **`CHANGELOG.md`**：按 [Keep a Changelog](https://keepachangelog.com/) 在顶部加新版本（`新增` / `变更` / `修复` 等）
-2. **`pages/options/src/changelog.ts`**：同步精简亮点到设置页「更新日志」（`zh` / `en` 各一条）
-3. （可选）本文件「更新日志」小节补一句摘要
+1. **`CHANGELOG.md`**: Keep a Changelog sections at the top (`Added` / `Changed` / `Fixed`, etc.)
+2. **`pages/options/src/changelog.ts`**: sync short highlights for Settings (`zh` / `en`)
+3. (Optional) add a one-line summary under Changelog in this README / `README.zh-CN.md`
 
-然后对齐版本、提交并打 tag：
+Then bump version, commit, and tag:
 
 ```bash
-# 将 0.5.1 换成目标版本
+# replace 0.5.1 with the target version
 pnpm update-version 0.5.1
 
-git add CHANGELOG.md pages/options/src/changelog.ts README.md package.json
-# 若 update-version 还改了子包 package.json，一并加入
+git add CHANGELOG.md pages/options/src/changelog.ts README.md README.zh-CN.md package.json
+# include any package.json files touched by update-version
 git add -u
 
 git commit -m "chore: release v0.5.1"
@@ -129,32 +131,32 @@ git push origin HEAD
 git push origin v0.5.1
 ```
 
-推送 `v*` tag 后，[`.github/workflows/release.yml`](.github/workflows/release.yml) 会：
+After a `v*` tag is pushed, [`.github/workflows/release.yml`](.github/workflows/release.yml) will:
 
-1. 构建 Chrome zip / Firefox xpi  
-2. 创建 GitHub Release 并上传安装包（`generate_release_notes` 会按 commit 生成 Release 说明，**不等于**仓库 `CHANGELOG.md`）  
-3. 仅自动更新 README 下载链接并推回默认分支  
+1. Build Chrome zip / Firefox xpi
+2. Create a GitHub Release and upload packages (`generate_release_notes` is commit-based and is **not** the same as `CHANGELOG.md`)
+3. Auto-update download links in `README.md` and `README.zh-CN.md` on the default branch
 
-## 使用说明（用户）
+## Usage (end users)
 
-1. 安装并固定 MultCat 到工具栏  
-2. 打开 Popup，选择翻译引擎与目标语言  
-3. 点击 **翻译页面** 进行双语阅读；需要时可 **还原**  
-4. 在网页上选中文字使用划词翻译  
-5. 导航、代码等不想翻的区域：Popup → **点击选择免翻区域**，或到设置页配置选择器；改进内置站点规则可改 `packages/storage/lib/impl/builtin-site-rules.json` 提 PR  
-6. 使用大模型时：设置页 → 翻译引擎选 OpenAI 兼容 → 填写厂商 / 模型 / Token  
+1. Install MultCat and pin it to the toolbar
+2. Open Popup; pick engine and target language
+3. Click **Translate page** for bilingual reading; **Restore** when needed
+4. Select text on a page for selection translate
+5. For nav/code you do not want translated: Popup → **Pick skip area**, or add selectors in Settings; improve builtins via `packages/storage/lib/impl/builtin-site-rules.json` PRs
+6. For LLMs: Settings → engine → OpenAI-compatible → vendor / model / token
 
-更完整的步骤见扩展内：**Popup → 使用教程**（跳转到设置页教程）。
+Full walkthrough: **Popup → Guide** (opens Settings guide).
 
-## 贡献免翻规则
+## Contributing skip rules
 
-内置免翻规则（仅 skip / exclude，无「包含翻译区域」）：
+Builtin skip rules (exclude only; no “include where to translate”):
 
 ```
 packages/storage/lib/impl/builtin-site-rules.json
 ```
 
-示例：
+Example:
 
 ```json
 {
@@ -163,46 +165,46 @@ packages/storage/lib/impl/builtin-site-rules.json
 }
 ```
 
-- `matches`：主机匹配（`*`、`*.domain.com`）
-- `excludeSelectors`：不翻译的 CSS 选择器（与用户自定义叠加）
+- `matches`: host patterns (`*`, `*.domain.com`)
+- `excludeSelectors`: CSS selectors that must not be translated (merged with user rules)
 
-说明见 [`packages/storage/lib/impl/SITE_RULES_SOURCE.md`](packages/storage/lib/impl/SITE_RULES_SOURCE.md)。
+Runtime prefers the remote file on `main` (24h cache) and falls back to the bundled JSON. See [`packages/storage/lib/impl/SITE_RULES_SOURCE.md`](packages/storage/lib/impl/SITE_RULES_SOURCE.md).
 
-## 技术栈
+## Stack
 
-- Manifest V3、React、TypeScript、Vite、Turborepo、Ant Design  
-- 翻译核心：`packages/translate`  
-- 设置存储：`packages/storage`  
-- 内容脚本：`pages/content`（DOM 双语、划词、免翻点选）  
-- 界面：`pages/popup`、`pages/options`
+- Manifest V3, React, TypeScript, Vite, Turborepo, Ant Design
+- Translation core: `packages/translate`
+- Settings storage: `packages/storage`
+- Content scripts: `pages/content` (DOM bilingual, selection, skip pick)
+- UI: `pages/popup`, `pages/options`
 
-## 项目结构（简要）
+## Layout (brief)
 
 ```
-chrome-extension/     # manifest、background、公共静态资源
+chrome-extension/     # manifest, background, shared assets
 pages/
-  popup/              # 弹窗
-  options/            # 设置 + 使用教程
-  content/            # 页面注入脚本
+  popup/              # toolbar popup
+  options/            # settings + guide
+  content/            # page injection
 packages/
-  translate/          # 各翻译引擎 adapter
-  storage/            # 设置与免翻规则
-  i18n/               # 扩展名称等文案
-  ui/                 # 共享 UI（如引擎 Logo）
+  translate/          # engine adapters
+  storage/            # settings & skip rules
+  i18n/               # extension name strings
+  ui/                 # shared UI (e.g. engine logos)
 ```
 
-## 许可协议
+## License
 
-本项目采用 **[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)**（非商业许可）。
+**[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)**.
 
-- **允许**：个人学习、研究、爱好、教育 / 公益等非商业用途；可修改、可再分发（须保留许可与版权声明）
-- **不允许**：任何商业用途（含售卖、商业产品内嵌、商业 SaaS 等）
+- **Allowed**: personal learning, research, hobby, education / nonprofits; modify and redistribute with license and copyright notice
+- **Not allowed**: any commercial use (sales, embedding in commercial products, commercial SaaS, etc.)
 
-完整条款见 [LICENSE](./LICENSE)。第三方依赖仍遵循各自原有许可。
+Full terms: [LICENSE](./LICENSE). Third-party dependencies keep their own licenses.
 
-## 贡献
+## Contributing
 
-欢迎 Issue / PR：修 bug、加引擎、改进 UI 与文档均可（须遵守非商业许可）。提交前建议运行：
+Issues and PRs welcome (bugs, engines, UI, docs) under the noncommercial license. Before submitting:
 
 ```bash
 pnpm lint

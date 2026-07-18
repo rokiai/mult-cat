@@ -86,18 +86,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Preserve updated README, then switch to default branch tip
+          # Preserve updated READMEs, then switch to default branch tip
           cp README.md /tmp/README.release.md
+          cp README.zh-CN.md /tmp/README.zh-CN.release.md
           git fetch origin "${DEFAULT_BRANCH}"
           git checkout -B "${DEFAULT_BRANCH}" "origin/${DEFAULT_BRANCH}"
           cp /tmp/README.release.md README.md
+          cp /tmp/README.zh-CN.release.md README.zh-CN.md
 
-          if git diff --quiet README.md; then
-            echo "README unchanged"
+          if git diff --quiet README.md README.zh-CN.md; then
+            echo "READMEs unchanged"
             exit 0
           fi
 
-          git add README.md
+          git add README.md README.zh-CN.md
           # Bot commit: skip local hooks (husky/lint-staged); README-only update.
           HUSKY=0 git commit -m "docs: update download links for ${TAG}"
           git push origin "HEAD:${DEFAULT_BRANCH}"

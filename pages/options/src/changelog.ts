@@ -6,6 +6,11 @@ type ChangelogItem = {
 
 const zh: ChangelogItem[] = [
   {
+    version: '0.5.3',
+    date: '2026-07-19',
+    highlights: ['修复：免翻点选选择器保证页面内唯一，避免同类名误伤其它区域', '保存免翻规则时提示命中元素数量'],
+  },
+  {
     version: '0.5.2',
     date: '2026-07-18',
     highlights: [
@@ -35,6 +40,14 @@ const zh: ChangelogItem[] = [
 ];
 
 const en: ChangelogItem[] = [
+  {
+    version: '0.5.3',
+    date: '2026-07-19',
+    highlights: [
+      'Fix: skip-pick selectors are unique on the page (no more shared-class false matches)',
+      'Skip-save toast shows how many elements the selector matches',
+    ],
+  },
   {
     version: '0.5.2',
     date: '2026-07-18',

@@ -1,5 +1,5 @@
 import { translationSkipStorage } from '@extension/storage';
-import { buildStableSelector } from '@src/matches/all/build-stable-selector';
+import { buildStableSelector, countSelectorMatches } from '@src/matches/all/build-stable-selector';
 
 const OVERLAY_ID = 'ceb-skip-pick-overlay';
 const HIGHLIGHT_ATTR = 'data-ceb-skip-hover';
@@ -95,10 +95,12 @@ const onClick = (event: MouseEvent) => {
 
   const selector = buildStableSelector(target);
   const host = location.hostname;
+  const matchCount = countSelectorMatches(selector);
   target.setAttribute('data-ceb-skip', 'true');
 
   void translationSkipStorage.addForHost(host, selector).then(() => {
-    showToast(`Skip saved: ${selector}`);
+    const scope = matchCount === 1 ? '1 element' : `${matchCount} elements`;
+    showToast(`Skip saved (${scope}): ${selector}`);
   });
 
   stopPickMode();

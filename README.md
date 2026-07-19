@@ -73,6 +73,10 @@ Select text for translation, IPA, definitions, and audio.
 
 Full notes: [`CHANGELOG.md`](./CHANGELOG.md).
 
+### 0.5.3 — 2026-07-19
+
+- Fix: skip-pick CSS selectors are unique on the page (shared class / CSS Module names no longer skip sibling regions)
+
 ### 0.5.2 — 2026-07-18
 
 - Export / merge-import user skip rules; remote builtin site rules with local fallback

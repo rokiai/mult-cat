@@ -120,7 +120,7 @@ export const createStorage = <D = string>(
         return fallback;
       }
 
-      return deserialize(value[key]) ?? fallback;
+      return deserialize(value[key] as string) ?? fallback;
     } catch (error) {
       if (isExtensionContextInvalidated(error)) {
         return cache ?? fallback;
@@ -170,7 +170,7 @@ export const createStorage = <D = string>(
     if (changes[key] === undefined) return;
 
     try {
-      const valueOrUpdate: ValueOrUpdateType<D> = deserialize(changes[key].newValue);
+      const valueOrUpdate: ValueOrUpdateType<D> = deserialize(changes[key].newValue as string);
 
       if (cache === valueOrUpdate) return;
 

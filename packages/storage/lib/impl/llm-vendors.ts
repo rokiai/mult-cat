@@ -1,15 +1,7 @@
 /** OpenAI-compatible LLM vendors for translation settings. */
 
 export type LlmVendorId =
-  | 'openai'
-  | 'kimi'
-  | 'deepseek'
-  | 'zhipu'
-  | 'qwen'
-  | 'doubao'
-  | 'siliconflow'
-  | 'openrouter'
-  | 'custom';
+  'openai' | 'kimi' | 'deepseek' | 'zhipu' | 'qwen' | 'doubao' | 'siliconflow' | 'openrouter' | 'custom';
 
 export type LlmModelOption = {
   id: string;

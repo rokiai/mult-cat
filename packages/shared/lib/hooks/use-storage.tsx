@@ -1,4 +1,4 @@
-import { useRef, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 import type { BaseStorageType } from '@extension/storage';
 
 type WrappedPromise = ReturnType<typeof wrapPromise>;
@@ -40,16 +40,15 @@ export const useStorage = <
 >(
   storage: Storage,
 ) => {
-  const initializedRef = useRef(false);
   const _data = useSyncExternalStore<Data | null>(storage.subscribe, storage.getSnapshot);
 
   if (!storageMap.has(storage)) {
     storageMap.set(storage, wrapPromise(storage.get()));
   }
 
-  if (_data || initializedRef.current) {
+  // Snapshot is null only before the first value is ready; after that prefer sync reads.
+  if (_data !== null) {
     storageMap.set(storage, { read: () => _data });
-    initializedRef.current = true;
   }
 
   return (_data ?? storageMap.get(storage)!.read()) as Exclude<Data, PromiseLike<unknown>>;

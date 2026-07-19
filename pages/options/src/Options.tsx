@@ -109,7 +109,6 @@ const faviconUrl = (host: string, size = 32) =>
   `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=${size}`;
 
 const SiteFavicon = ({ host, size = 16 }: { host: string; size?: number }) => {
-  const [failed, setFailed] = useState(false);
   const clean =
     host
       .trim()
@@ -117,11 +116,23 @@ const SiteFavicon = ({ host, size = 16 }: { host: string; size?: number }) => {
       .replace(/^https?:\/\//, '')
       .split('/')[0] ?? '';
 
-  useEffect(() => {
-    setFailed(false);
-  }, [clean]);
+  if (!clean) {
+    return (
+      <span
+        aria-hidden
+        className="settings-favicon settings-favicon-fallback"
+        style={{ width: size, height: size, fontSize: Math.max(10, size - 4) }}
+      />
+    );
+  }
 
-  if (!clean || failed) {
+  return <SiteFaviconImage key={clean} clean={clean} size={size} />;
+};
+
+const SiteFaviconImage = ({ clean, size }: { clean: string; size: number }) => {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
     return (
       <span
         aria-hidden

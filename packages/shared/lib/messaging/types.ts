@@ -49,7 +49,4 @@ export type ExtensionMessage =
   | RefreshBuiltinSiteRulesMessage;
 
 export type ExtensionResponse =
-  | TranslateTextResultMessage
-  | PageTranslateStateResponse
-  | { ok: true }
-  | { ok: false; error: string };
+  TranslateTextResultMessage | PageTranslateStateResponse | { ok: true } | { ok: false; error: string };

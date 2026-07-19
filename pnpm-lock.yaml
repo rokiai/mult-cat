@@ -288,6 +288,10 @@ importers:
         version: link:../tsconfig
 
   packages/tailwindcss-config:
+    dependencies:
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
     devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
@@ -397,6 +401,9 @@ importers:
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@extension/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig

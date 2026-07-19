@@ -3,5 +3,5 @@
   "compilerOptions": {
     "baseUrl": "."
   },
-  "include": ["tailwind.config.ts"]
+  "include": ["tailwind.config.ts", "with-ui.ts"]
 }

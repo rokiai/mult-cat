@@ -1,7 +1,1 @@
-import deepmerge from 'deepmerge';
-import type { Config } from 'tailwindcss';
-
-export const withUI = (tailwindConfig: Config): Config =>
-  deepmerge(tailwindConfig, {
-    content: ['../../packages/ui/lib/**/*.tsx'],
-  });
+export { withUI } from '@extension/tailwindcss-config/with-ui';

@@ -5,6 +5,13 @@
   "main": "tailwind.config.ts",
   "private": true,
   "sideEffects": false,
+  "exports": {
+    ".": "./tailwind.config.ts",
+    "./with-ui": "./with-ui.ts"
+  },
+  "dependencies": {
+    "deepmerge": "^4.3.1"
+  },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*"
   }

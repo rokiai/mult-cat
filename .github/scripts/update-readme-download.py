@@ -11,6 +11,11 @@ import sys
 START = '<!-- release-download:start -->'
 END = '<!-- release-download:end -->'
 
+CHROME_WEB_STORE_URL = (
+  'https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke'
+)
+CHROME_WEB_STORE_ID = 'bjclhholfilknlhcnjnfgclgojphcdke'
+
 
 def build_block(*, repo: str, tag: str, version: str, locale: str) -> str:
   base = f'https://github.com/{repo}/releases'
@@ -22,6 +27,11 @@ def build_block(*, repo: str, tag: str, version: str, locale: str) -> str:
 
   badge = (
     f'<p align="center">\n'
+    f'  <a href="{CHROME_WEB_STORE_URL}">'
+    f'<img alt="Chrome Web Store" '
+    f'src="https://img.shields.io/chrome-web-store/v/{CHROME_WEB_STORE_ID}'
+    f'?label=Chrome%20Web%20Store&style=flat-square" />'
+    f'</a>\n'
     f'  <a href="{latest}">'
     f'<img alt="Latest Release" '
     f'src="https://img.shields.io/github/v/release/{repo}?label=release&style=flat-square" />'
@@ -41,7 +51,7 @@ def build_block(*, repo: str, tag: str, version: str, locale: str) -> str:
       f'| Chrome / Edge / Chromium | [MultCat-chrome.zip]({chrome}) | [v{version}]({chrome_ver}) |',
       f'| Firefox | [MultCat-firefox.xpi]({firefox}) | [v{version}]({firefox_ver}) |',
       '',
-      '安装（Chrome）：下载 zip → 解压 → 打开 `chrome://extensions` → '
+      '安装（Chrome，侧载）：下载 zip → 解压 → 打开 `chrome://extensions` → '
       '开启开发者模式 → **加载已解压的扩展程序** → 选择解压后的文件夹。',
       END,
     ]
@@ -57,7 +67,7 @@ def build_block(*, repo: str, tag: str, version: str, locale: str) -> str:
       f'| Chrome / Edge / Chromium | [MultCat-chrome.zip]({chrome}) | [v{version}]({chrome_ver}) |',
       f'| Firefox | [MultCat-firefox.xpi]({firefox}) | [v{version}]({firefox_ver}) |',
       '',
-      'Install (Chrome): download the zip → unzip → open `chrome://extensions` → '
+      'Install (Chrome, sideload): download the zip → unzip → open `chrome://extensions` → '
       'enable Developer mode → **Load unpacked** → select the unzipped folder.',
       END,
     ]

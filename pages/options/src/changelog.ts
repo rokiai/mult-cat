@@ -6,6 +6,11 @@ type ChangelogItem = {
 
 const zh: ChangelogItem[] = [
   {
+    version: '0.5.4',
+    date: '2026-07-20',
+    highlights: ['修复：划词翻译仅在拖选文字时弹出，单击不再误触', 'README 增加 Chrome 应用商店安装链接'],
+  },
+  {
     version: '0.5.3',
     date: '2026-07-19',
     highlights: ['修复：免翻点选选择器保证页面内唯一，避免同类名误伤其它区域', '保存免翻规则时提示命中元素数量'],
@@ -40,6 +45,14 @@ const zh: ChangelogItem[] = [
 ];
 
 const en: ChangelogItem[] = [
+  {
+    version: '0.5.4',
+    date: '2026-07-20',
+    highlights: [
+      'Fix: selection translate shows only after drag-select, not on click',
+      'README: Chrome Web Store install link',
+    ],
+  },
   {
     version: '0.5.3',
     date: '2026-07-19',

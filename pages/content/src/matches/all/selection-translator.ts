@@ -10,6 +10,24 @@ let root: HTMLDivElement | null = null;
 let hideTimer: number | null = null;
 let lastText = '';
 
+/** Minimum pointer travel (mousedown → mouseup) to treat as drag-select (划词). */
+const DRAG_SELECT_MIN_PX = 14;
+let pressOrigin: { x: number; y: number } | null = null;
+
+const pointerTravelSq = (event: MouseEvent): number => {
+  if (!pressOrigin) return 0;
+  const dx = event.clientX - pressOrigin.x;
+  const dy = event.clientY - pressOrigin.y;
+  return dx * dx + dy * dy;
+};
+
+const scheduleHideIfSelectionEmpty = () => {
+  if (hideTimer) window.clearTimeout(hideTimer);
+  hideTimer = window.setTimeout(() => {
+    if (!window.getSelection()?.toString().trim()) hide();
+  }, 180);
+};
+
 const ensureStyle = () => {
   if (document.getElementById(STYLE_ID)) return;
   const style = document.createElement('style');
@@ -311,22 +329,30 @@ const translateSelection = async () => {
   }
 };
 
+const onMouseDown = (event: MouseEvent) => {
+  if (event.button !== 0) return;
+  pressOrigin = { x: event.clientX, y: event.clientY };
+};
+
 const onMouseUp = async (event: MouseEvent) => {
-  if ((event.target as Element | null)?.closest?.(`#${ROOT_ID}`)) return;
+  if ((event.target as Element | null)?.closest?.(`#${ROOT_ID}`)) {
+    pressOrigin = null;
+    return;
+  }
+
+  const minTravelSq = DRAG_SELECT_MIN_PX * DRAG_SELECT_MIN_PX;
+  const draggedToSelect = pressOrigin !== null && pointerTravelSq(event) >= minTravelSq;
+  pressOrigin = null;
+
+  const text = window.getSelection()?.toString().trim() ?? '';
+  if (!draggedToSelect || !text || text.length < 2) {
+    scheduleHideIfSelectionEmpty();
+    return;
+  }
 
   const settings = await translationSettingsStorage.get();
   if (settings.selectionTranslateEnabled === false) {
     hide();
-    return;
-  }
-
-  const selection = window.getSelection();
-  const text = selection?.toString().trim() ?? '';
-  if (!text || text.length < 2) {
-    if (hideTimer) window.clearTimeout(hideTimer);
-    hideTimer = window.setTimeout(() => {
-      if (!window.getSelection()?.toString().trim()) hide();
-    }, 180);
     return;
   }
 
@@ -343,6 +369,7 @@ const onScroll = () => {
 };
 
 export const initSelectionTranslate = (): void => {
+  document.addEventListener('mousedown', onMouseDown, true);
   document.addEventListener('mouseup', onMouseUp, true);
   document.addEventListener('keydown', onKeyDown, true);
   window.addEventListener('scroll', onScroll, true);

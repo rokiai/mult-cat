@@ -12,21 +12,24 @@
 
 ## 下载安装
 
-推送形如 `v0.5.0` 的 git tag 后，GitHub Actions 会自动构建并发布到 **Releases**。
+**Chrome / Edge / Chromium：** 推荐从 [Chrome 应用商店](https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke) 一键安装。
+
+**Firefox** 或需要手动加载时，请使用下方 **GitHub Releases**。推送形如 `v0.5.0` 的 git tag 后，GitHub Actions 会自动构建并发布安装包。
 
 <!-- release-download:start -->
 <p align="center">
+  <a href="https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke"><img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/v/bjclhholfilknlhcnjnfgclgojphcdke?label=Chrome%20Web%20Store&style=flat-square" /></a>
   <a href="https://github.com/rokiai/mult-cat/releases/latest"><img alt="Latest Release" src="https://img.shields.io/github/v/release/rokiai/mult-cat?label=release&style=flat-square" /></a>
 </p>
 
-**当前版本：[v0.5.3](https://github.com/rokiai/mult-cat/releases/tag/v0.5.3)** · [全部 Releases](https://github.com/rokiai/mult-cat/releases)
+**当前版本：[v0.5.4](https://github.com/rokiai/mult-cat/releases/tag/v0.5.4)** · [全部 Releases](https://github.com/rokiai/mult-cat/releases)
 
 | 浏览器 | 最新安装包 | 本版本 |
 | --- | --- | --- |
-| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.3](https://github.com/rokiai/mult-cat/releases/download/v0.5.3/MultCat-0.5.3-chrome.zip) |
-| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.3](https://github.com/rokiai/mult-cat/releases/download/v0.5.3/MultCat-0.5.3-firefox.xpi) |
+| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.4](https://github.com/rokiai/mult-cat/releases/download/v0.5.4/MultCat-0.5.4-chrome.zip) |
+| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.4](https://github.com/rokiai/mult-cat/releases/download/v0.5.4/MultCat-0.5.4-firefox.xpi) |
 
-安装（Chrome）：下载 zip → 解压 → 打开 `chrome://extensions` → 开启开发者模式 → **加载已解压的扩展程序** → 选择解压后的文件夹。
+安装（Chrome，侧载）：下载 zip → 解压 → 打开 `chrome://extensions` → 开启开发者模式 → **加载已解压的扩展程序** → 选择解压后的文件夹。
 <!-- release-download:end -->
 
 ## 功能
@@ -72,6 +75,11 @@
 ## 更新日志
 
 完整记录见 [`CHANGELOG.md`](./CHANGELOG.md)。
+
+### 0.5.4 — 2026-07-20
+
+- 修复：划词翻译仅在拖选文字时弹出，单击不再误触
+- 文档：README 增加 Chrome 应用商店安装链接
 
 ### 0.5.3 — 2026-07-19
 
@@ -148,7 +156,7 @@ git push origin v0.5.1
 
 ## 使用说明（用户）
 
-1. 安装并固定 MultCat 到工具栏
+1. 从 [Chrome 应用商店](https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke)（Chrome）或 Releases（Firefox）安装，并固定 MultCat 到工具栏
 2. 打开 Popup，选择翻译引擎与目标语言
 3. 点击 **翻译页面** 进行双语阅读；需要时可 **还原**
 4. 在网页上选中文字使用划词翻译

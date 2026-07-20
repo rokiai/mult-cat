@@ -2,6 +2,16 @@
 
 MultCat（多语翻译猫）版本记录。
 
+## [0.5.4] — 2026-07-20
+
+### 修复
+
+- 划词翻译仅在**拖选文字**（指针移动达到阈值）时弹出菜单，单击 / 双击不再误触
+
+### 文档
+
+- README 增加 [Chrome 应用商店](https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke) 安装入口；发版脚本同步保留商店徽章
+
 ## [0.5.3] — 2026-07-19
 
 ### 修复

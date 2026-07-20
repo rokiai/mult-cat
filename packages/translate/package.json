@@ -1,6 +1,6 @@
 {
   "name": "@extension/translate",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "chrome extension - translation providers",
   "type": "module",
   "private": true,

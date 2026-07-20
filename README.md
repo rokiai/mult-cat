@@ -12,21 +12,24 @@
 
 ## Download & install
 
-After a `v*` git tag is pushed, GitHub Actions builds and publishes to **Releases**.
+**Chrome / Edge / Chromium:** install from the [Chrome Web Store](https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke) (recommended).
+
+For **Firefox** or sideloading, use **GitHub Releases** below. After a `v*` git tag is pushed, GitHub Actions builds and publishes packages there.
 
 <!-- release-download:start -->
 <p align="center">
+  <a href="https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke"><img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/v/bjclhholfilknlhcnjnfgclgojphcdke?label=Chrome%20Web%20Store&style=flat-square" /></a>
   <a href="https://github.com/rokiai/mult-cat/releases/latest"><img alt="Latest Release" src="https://img.shields.io/github/v/release/rokiai/mult-cat?label=release&style=flat-square" /></a>
 </p>
 
-**Current version: [v0.5.3](https://github.com/rokiai/mult-cat/releases/tag/v0.5.3)** · [All releases](https://github.com/rokiai/mult-cat/releases)
+**Current version: [v0.5.4](https://github.com/rokiai/mult-cat/releases/tag/v0.5.4)** · [All releases](https://github.com/rokiai/mult-cat/releases)
 
 | Browser | Latest package | This version |
 | --- | --- | --- |
-| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.3](https://github.com/rokiai/mult-cat/releases/download/v0.5.3/MultCat-0.5.3-chrome.zip) |
-| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.3](https://github.com/rokiai/mult-cat/releases/download/v0.5.3/MultCat-0.5.3-firefox.xpi) |
+| Chrome / Edge / Chromium | [MultCat-chrome.zip](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-chrome.zip) | [v0.5.4](https://github.com/rokiai/mult-cat/releases/download/v0.5.4/MultCat-0.5.4-chrome.zip) |
+| Firefox | [MultCat-firefox.xpi](https://github.com/rokiai/mult-cat/releases/latest/download/MultCat-firefox.xpi) | [v0.5.4](https://github.com/rokiai/mult-cat/releases/download/v0.5.4/MultCat-0.5.4-firefox.xpi) |
 
-Install (Chrome): download the zip → unzip → open `chrome://extensions` → enable Developer mode → **Load unpacked** → select the unzipped folder.
+Install (Chrome, sideload): download the zip → unzip → open `chrome://extensions` → enable Developer mode → **Load unpacked** → select the unzipped folder.
 <!-- release-download:end -->
 
 ## Features
@@ -72,6 +75,11 @@ Select text for translation, IPA, definitions, and audio.
 ## Changelog
 
 Full notes: [`CHANGELOG.md`](./CHANGELOG.md).
+
+### 0.5.4 — 2026-07-20
+
+- Fix: selection translate only after drag-select; clicks no longer open the menu
+- Docs: Chrome Web Store install link in README
 
 ### 0.5.3 — 2026-07-19
 
@@ -148,7 +156,7 @@ After a `v*` tag is pushed, [`.github/workflows/release.yml`](.github/workflows/
 
 ## Usage (end users)
 
-1. Install MultCat and pin it to the toolbar
+1. Install from the [Chrome Web Store](https://chromewebstore.google.com/detail/multcat/bjclhholfilknlhcnjnfgclgojphcdke) (Chrome) or Releases (Firefox), then pin MultCat to the toolbar
 2. Open Popup; pick engine and target language
 3. Click **Translate page** for bilingual reading; **Restore** when needed
 4. Select text on a page for selection translate
